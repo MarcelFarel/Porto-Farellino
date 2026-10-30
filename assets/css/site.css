@@ -1977,15 +1977,16 @@ button {
 
 .portrait-img-wrap {
   position: relative;
-  aspect-ratio: 5 / 5.6;
+  aspect-ratio: 4 / 4.7;
   overflow: hidden;
-  background: #0B101B;
+  background: #141216;
 }
 
 .portrait-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 8%;
   display: block;
   transition: transform 0.4s ease;
 }
@@ -1999,27 +2000,6 @@ button {
   inset: auto 0 0 0;
   padding: 1.35rem 1.25rem 1.1rem;
   background: linear-gradient(to top, rgba(7, 9, 14, 0.96) 15%, rgba(7, 9, 14, 0.65) 65%, transparent 100%);
-}
-
-.portrait-upload-btn {
-  position: absolute;
-  top: 0.85rem;
-  right: 0.85rem;
-  z-index: 4;
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
-  background: rgba(7, 9, 14, 0.78);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--rule-strong);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--ink);
-  transition: all 0.15s ease;
-}
-
-.portrait-upload-btn:hover {
-  border-color: var(--amber);
-  color: var(--amber);
 }
 
 /* Floating Chips around Portrait */

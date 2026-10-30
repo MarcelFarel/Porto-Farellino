@@ -83,11 +83,8 @@
     }, 2900);
   }
 
-  /* ---------- 4. Interactive 3D-Tilt Portrait Card & Photo Loader ---------- */
+  /* ---------- 4. Interactive 3D-Tilt Portrait Card ---------- */
   var portraitCard = qs('#portrait-card');
-  var photoImg = qs('#profile-photo-img');
-  var uploadBtn = qs('#profile-upload-btn');
-  var fileInput = qs('#profile-file-input');
 
   if (portraitCard) {
     portraitCard.addEventListener('mousemove', function (e) {
@@ -103,36 +100,7 @@
     });
   }
 
-  if (photoImg) {
-    try {
-      var savedPhoto = localStorage.getItem('farellino_profile_photo');
-      if (savedPhoto) {
-        photoImg.src = savedPhoto;
-      } else {
-        /* Automatically check if user placed assets/img/profile.jpg */
-        var probeImg = new Image();
-        probeImg.onload = function () { photoImg.src = 'assets/img/profile.jpg'; };
-        probeImg.src = 'assets/img/profile.jpg';
-      }
-    } catch (err) {}
-  }
-
-  if (uploadBtn && fileInput && photoImg) {
-    uploadBtn.addEventListener('click', function () {
-      fileInput.click();
-    });
-    fileInput.addEventListener('change', function () {
-      var file = fileInput.files && fileInput.files[0];
-      if (!file) return;
-      var reader = new FileReader();
-      reader.onload = function (ev) {
-        var dataUrl = ev.target.result;
-        photoImg.src = dataUrl;
-        try { localStorage.setItem('farellino_profile_photo', dataUrl); } catch (err) {}
-      };
-      reader.readAsDataURL(file);
-    });
-  }
+  try { localStorage.removeItem('farellino_profile_photo'); } catch (err) {}
 
   /* ---------- 5. Bento Grid Cursor Spotlight ---------- */
   qsa('.bento-cell').forEach(function (cell) {
