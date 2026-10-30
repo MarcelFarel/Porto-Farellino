@@ -9,11 +9,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" class="scroll-progress-bar" aria-hidden="true"></div>
+
   <a href="#main" class="sr-only skip-link">Skip to content</a>
 
   <!-- ==================== STICKY HEADER ==================== -->
@@ -26,9 +29,10 @@
       </a>
 
       <div class="nav-links">
+        <a href="#showcase" class="nav-link">Showcase</a>
+        <a href="#stack" class="nav-link">Bento Stack</a>
         <a href="#projects" class="nav-link">Projects</a>
-        <a href="#stack" class="nav-link">Technical Stack</a>
-        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#experience" class="nav-link">Journey</a>
         <a href="#contact" class="nav-link">Contact</a>
         <button type="button" id="cmd-trigger" class="cmd-trigger" aria-label="Open quick command palette">
           <span>Quick Jump</span>
@@ -44,9 +48,10 @@
     </nav>
 
     <div id="mobile-menu" class="mobile-nav" hidden>
-      <a href="#projects">Projects &amp; Live Workbenches</a>
-      <a href="#stack">Technical Stack</a>
-      <a href="#experience">Experience &amp; Education</a>
+      <a href="#showcase">Showcase Reel</a>
+      <a href="#stack">Bento Tech Stack</a>
+      <a href="#projects">Interactive Projects</a>
+      <a href="#experience">Leadership &amp; Journey</a>
       <a href="#contact">Contact</a>
       <div style="padding-top:0.75rem">
         <a href="Farellino%20Audric_CV.pdf" download="Farellino Audric_CV.pdf" class="btn btn-amber" style="width:100%;text-align:center;border-bottom:0">Download CV (PDF)</a>
@@ -54,22 +59,43 @@
     </div>
   </header>
 
-  <!-- ==================== HERO SECTION + AUTO-PLAYING SHOWCASE SLIDER ==================== -->
+  <!-- ==================== FLOATING SECTION NAVIGATION DOCK ==================== -->
+  <nav class="floating-dock" aria-label="Section quick jump">
+    <a href="#top" class="dock-pill is-active" data-dock-link="top">Profile</a>
+    <a href="#showcase" class="dock-pill" data-dock-link="showcase">Showcase</a>
+    <a href="#stack" class="dock-pill" data-dock-link="stack">Bento Stack</a>
+    <a href="#projects" class="dock-pill" data-dock-link="projects">Projects</a>
+    <a href="#experience" class="dock-pill" data-dock-link="experience">Journey</a>
+    <a href="#contact" class="dock-pill" data-dock-link="contact">Contact</a>
+  </nav>
+
+  <!-- ==================== HERO SECTION: GIANT NAME + 3D PORTRAIT CARD ==================== -->
   <section id="top" class="hero-section">
-    <div class="shell hero-grid">
-      <!-- Left Column: Headline, KPIs & Primary Actions -->
-      <div class="hero-main">
+    <div class="shell hero-v4-grid">
+      <!-- Left Column: Giant Name Identity, Dynamic Role & Bio -->
+      <div class="hero-main" data-reveal="left">
         <div class="hero-status-line">
           <span class="status-dot" aria-hidden="true"></span>
           <span>Available for 1-Year Internship (Semesters 6 &amp; 7)</span>
         </div>
 
-        <h1 class="hero-title">
-          Building structured data pipelines, analytical warehouses, and reliable software systems.
+        <p class="hero-eyebrow">
+          <span>BINUS UNIVERSITY // COMPUTER SCIENCE</span>
+          <span>•</span>
+          <span>JAKARTA, ID</span>
+        </p>
+
+        <h1 class="hero-name-display">
+          FARELLINO AUDRIC
         </h1>
 
-        <p class="hero-bio">
-          I am a fifth-semester Computer Science undergraduate at BINUS University specializing in Database Technology, with additional coursework in Network Security. I focus on designing relational schemas, automating ETL workflows, and turning raw datasets into clear operational tools. Currently seeking a one-year internship in Data Engineering, Database Administration, or Backend Development for semesters 6 and 7.
+        <div class="hero-role-bar">
+          <span>Specializing in</span>
+          <span id="role-rotator" class="role-dynamic">Database Technology &amp; OLAP</span>
+        </div>
+
+        <p class="hero-bio" style="max-width:60ch">
+          Building structured data pipelines, analytical warehouses, and reliable software systems. I am a fifth-semester Computer Science undergraduate at BINUS University focusing on relational schema design, automated Pentaho ETL workflows, and turning raw datasets into interactive operational tools.
         </p>
 
         <!-- Key Engineering Metrics -->
@@ -94,6 +120,7 @@
             Download CV (PDF)
           </a>
           <a href="#projects" class="btn btn-ghost">Explore Live Workbenches</a>
+          <a href="#showcase" class="btn btn-ghost">Watch Project Slider</a>
         </div>
 
         <div class="hero-links">
@@ -103,169 +130,44 @@
         </div>
       </div>
 
-      <!-- Right Column: Auto-Playing Interactive Showcase Slider -->
-      <aside id="hero-carousel" class="hero-carousel" aria-label="Auto-playing project showcase slider">
-        <div class="carousel-topbar">
-          <div style="display:flex;align-items:center;gap:0.55rem">
-            <span class="status-dot" aria-hidden="true"></span>
-            <span class="mono" style="font-size:11.5px;color:var(--ink);font-weight:600">LIVE_SHOWCASE // AUTO_SLIDER</span>
-          </div>
-          <div class="carousel-nav-btns">
-            <button type="button" id="hero-carousel-toggle" class="preset-chip" style="padding:0.2rem 0.55rem;font-size:11px" aria-label="Pause or resume slider">Auto: ON</button>
-            <button type="button" id="hero-carousel-prev" class="icon-btn" aria-label="Previous slide">
-              <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2.5 4 6l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-            </button>
-            <button type="button" id="hero-carousel-next" class="icon-btn" aria-label="Next slide">
-              <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-            </button>
-          </div>
+      <!-- Right Column: Interactive 3D-Tilt Profile Portrait Card -->
+      <div class="portrait-stage" data-reveal="right" style="--reveal-delay:120ms">
+        <div class="float-chip float-chip-1">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Database &amp; ETL Track</span>
         </div>
 
-        <!-- 3 Slide Selector Tabs with Animated Progress Bars -->
-        <div class="carousel-tabs" role="tablist" aria-label="Showcase slides">
-          <button type="button" class="carousel-tab" data-hero-tab="0" aria-selected="true">
-            <span class="carousel-tab-title">1. Grocery OLAP ETL</span>
-            <span class="carousel-tab-sub">Kettle • MySQL • Power BI</span>
-            <span class="carousel-progress-track"><span class="carousel-progress-bar" data-hero-progress="0"></span></span>
+        <div class="float-chip float-chip-2">
+          <span style="color:var(--cyan)">★</span>
+          <span>INC Contest Participant</span>
+        </div>
+
+        <div id="portrait-card" class="portrait-card">
+          <button type="button" id="profile-upload-btn" class="portrait-upload-btn" title="Pilih foto profil kamu dari komputer untuk preview langsung">
+            📷 Ganti Foto Kamu
           </button>
-          <button type="button" class="carousel-tab" data-hero-tab="1" aria-selected="false">
-            <span class="carousel-tab-title">2. FloodPredict AI</span>
-            <span class="carousel-tab-sub">Scikit-Learn • GeoJSON</span>
-            <span class="carousel-progress-track"><span class="carousel-progress-bar" data-hero-progress="1"></span></span>
-          </button>
-          <button type="button" class="carousel-tab" data-hero-tab="2" aria-selected="false">
-            <span class="carousel-tab-title">3. cryPito Market</span>
-            <span class="carousel-tab-sub">5-Page UI • Validator</span>
-            <span class="carousel-progress-track"><span class="carousel-progress-bar" data-hero-progress="2"></span></span>
-          </button>
-        </div>
+          <input type="file" id="profile-file-input" accept="image/*" hidden>
 
-        <!-- Slide Viewport -->
-        <div class="carousel-viewport">
-          <!-- SLIDE 0: Grocery Basket Analysis Live ETL & Power BI Preview -->
-          <div class="carousel-slide" data-hero-slide="0">
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.75rem">
-              <span class="badge badge-amber">End-to-End Data Warehouse</span>
-              <span class="mono" style="font-size:11.5px;color:var(--ok)">1,000 txns • $322,966.75 verified</span>
-            </div>
-
-            <!-- Animated SVG Data Flow Diagram -->
-            <div style="background:#070A10;border:1px solid var(--rule);border-radius:8px;padding:0.75rem;margin-bottom:0.85rem">
-              <svg viewBox="0 0 520 96" style="width:100%;height:auto;display:block" role="img" aria-label="Animated ETL pipeline from CSV to Pentaho Kettle, MySQL Star Schema, and Power BI">
-                <!-- Animated connector lines -->
-                <line x1="108" y1="48" x2="148" y2="48" stroke="#F5A524" stroke-width="2" class="flow-line"/>
-                <line x1="252" y1="48" x2="292" y2="48" stroke="#38BDF8" stroke-width="2" class="flow-line"/>
-                <line x1="396" y1="48" x2="426" y2="48" stroke="#34D399" stroke-width="2" class="flow-line"/>
-
-                <!-- Node 1: CSV / OLTP -->
-                <rect x="6" y="14" width="102" height="68" rx="6" fill="#111722" stroke="#334155"/>
-                <text x="57" y="37" fill="#F3F6FA" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="600" text-anchor="middle">OLTP Staging</text>
-                <text x="57" y="53" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle">1,000 CSV rows</text>
-                <text x="57" y="69" fill="#F5A524" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">3 Branches</text>
-
-                <!-- Node 2: Pentaho Kettle -->
-                <rect x="148" y="14" width="104" height="68" rx="6" fill="#161F2E" stroke="#F5A524"/>
-                <text x="200" y="37" fill="#F5A524" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="600" text-anchor="middle">Pentaho ETL</text>
-                <text x="200" y="53" fill="#F3F6FA" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle">Orchestration.kjb</text>
-                <text x="200" y="69" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">5 .ktr transforms</text>
-
-                <!-- Node 3: MySQL Star Schema -->
-                <rect x="292" y="14" width="104" height="68" rx="6" fill="#111722" stroke="#38BDF8"/>
-                <text x="344" y="37" fill="#38BDF8" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="600" text-anchor="middle">MySQL OLAP</text>
-                <text x="344" y="53" fill="#F3F6FA" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle">SalesFact + 4 Dim</text>
-                <text x="344" y="69" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">Star Schema</text>
-
-                <!-- Node 4: Power BI -->
-                <rect x="426" y="14" width="88" height="68" rx="6" fill="#111722" stroke="#34D399"/>
-                <text x="470" y="37" fill="#34D399" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="600" text-anchor="middle">Power BI</text>
-                <text x="470" y="53" fill="#F3F6FA" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle">BI &amp; SQL</text>
-                <text x="470" y="69" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">6.97 Rating</text>
-              </svg>
-            </div>
-
-            <!-- Visual Thumbnail Preview -->
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.65rem">
-              <div style="border:1px solid var(--rule);border-radius:7px;overflow:hidden;background:#07090E">
-                <img src="assets/img/powerbi-dashboard-canvas.svg" alt="Power BI report canvas preview" data-lightbox-src="assets/img/powerbi-dashboard-canvas.svg" data-lightbox-caption="Power BI Executive Dashboard Canvas (VisualizationNew.pbix)" style="display:block;width:100%;height:118px;object-fit:cover;cursor:zoom-in">
-                <div class="mono" style="padding:0.35rem 0.55rem;font-size:10.5px;color:var(--muted);border-top:1px solid var(--rule)">Power BI Canvas (Click to zoom)</div>
+          <div class="portrait-img-wrap">
+            <img id="profile-photo-img" src="assets/img/profile-avatar.svg" alt="Farellino Audric Portrait">
+            <div class="portrait-overlay">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem">
+                <div>
+                  <p style="font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.2">Farellino Audric</p>
+                  <p class="mono" style="font-size:11.5px;color:var(--amber);margin-top:0.15rem">Data Engineering • Database • Backend</p>
+                </div>
+                <span class="badge badge-ok">BINUS '27</span>
               </div>
-              <div style="border:1px solid var(--rule);border-radius:7px;overflow:hidden;background:#07090E">
-                <img src="assets/img/pentaho-orchestration-canvas.svg" alt="Pentaho Spoon ETL workflow preview" data-lightbox-src="assets/img/pentaho-orchestration-canvas.svg" data-lightbox-caption="Pentaho Data Integration (Spoon) Canvas: Orchestration.kjb & SalesFact.ktr" style="display:block;width:100%;height:118px;object-fit:cover;cursor:zoom-in">
-                <div class="mono" style="padding:0.35rem 0.55rem;font-size:10.5px;color:var(--muted);border-top:1px solid var(--rule)">Pentaho Spoon .kjb (Click to zoom)</div>
+              <div style="margin-top:0.75rem;padding-top:0.65rem;border-top:1px solid rgba(255,255,255,0.12);display:flex;flex-wrap:wrap;gap:0.35rem">
+                <span class="art" style="font-size:11px">MySQL OLAP</span>
+                <span class="art" style="font-size:11px">Pentaho Kettle</span>
+                <span class="art" style="font-size:11px">Python ML</span>
+                <span class="art" style="font-size:11px">Power BI</span>
               </div>
             </div>
           </div>
-
-          <!-- SLIDE 1: JakartaFloodPredict AI Preview -->
-          <div class="carousel-slide" data-hero-slide="1" hidden>
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.75rem">
-              <span class="badge badge-cyan">Multiple Linear Regression &amp; GeoJSON</span>
-              <span class="mono" style="font-size:11.5px;color:var(--amber)">R² = 0.5110 • 4,698 Records</span>
-            </div>
-
-            <div style="border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:#07090E;margin-bottom:0.75rem">
-              <img src="assets/img/streamlit-flood-app.svg" alt="JakartaFloodPredict AI Streamlit interface preview" data-lightbox-src="assets/img/streamlit-flood-app.svg" data-lightbox-caption="JakartaFloodPredict AI Streamlit Application (Main.py) - Cengkareng Barat Benchmark" style="display:block;width:100%;height:165px;object-fit:cover;cursor:zoom-in">
-            </div>
-
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.55rem">
-              <div style="background:#090D14;border:1px solid var(--rule);border-radius:6px;padding:0.5rem 0.65rem">
-                <span style="font-size:11px;color:var(--muted);display:block">Benchmark RW 01</span>
-                <strong class="mono" style="font-size:14px;color:var(--ink)">42.8 cm</strong>
-              </div>
-              <div style="background:#090D14;border:1px solid var(--amber-border);border-radius:6px;padding:0.5rem 0.65rem">
-                <span style="font-size:11px;color:var(--muted);display:block">Alert Status</span>
-                <strong class="mono" style="font-size:13px;color:var(--amber)">WASPADA</strong>
-              </div>
-              <div style="background:#090D14;border:1px solid var(--rule);border-radius:6px;padding:0.5rem 0.65rem">
-                <span style="font-size:11px;color:var(--muted);display:block">Granularity</span>
-                <strong class="mono" style="font-size:13px;color:var(--cyan)">5 Cities / RW</strong>
-              </div>
-            </div>
-          </div>
-
-          <!-- SLIDE 2: cryPito Market UI Preview -->
-          <div class="carousel-slide" data-hero-slide="2" hidden>
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.75rem">
-              <span class="badge badge-ok">Live Embedded 5-Page Web App</span>
-              <span class="mono" style="font-size:11.5px;color:var(--muted)">HTML5 • CSS3 • Vanilla JS</span>
-            </div>
-
-            <div style="background:#090C18;border:1px solid var(--rule);border-radius:8px;padding:0.85rem;margin-bottom:0.75rem">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.65rem">
-                <span class="mono" style="font-size:12px;color:var(--ink);font-weight:600">cryPito // Top Performing Assets</span>
-                <span class="badge badge-ok" style="font-size:10px">Real-time DOM Filter</span>
-              </div>
-              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.55rem;font-family:var(--font-mono);font-size:12px">
-                <div style="padding:0.55rem 0.7rem;background:#11162B;border:1px solid var(--rule);border-radius:6px;display:flex;justify-content:space-between">
-                  <span style="color:var(--ink)">₿ BTC / USD</span>
-                  <span style="color:var(--ok)">+4.82%</span>
-                </div>
-                <div style="padding:0.55rem 0.7rem;background:#11162B;border:1px solid var(--rule);border-radius:6px;display:flex;justify-content:space-between">
-                  <span style="color:var(--ink)">Ξ ETH / USD</span>
-                  <span style="color:var(--ok)">+3.15%</span>
-                </div>
-                <div style="padding:0.55rem 0.7rem;background:#11162B;border:1px solid var(--rule);border-radius:6px;display:flex;justify-content:space-between">
-                  <span style="color:var(--ink)">◎ SOL / IDR</span>
-                  <span style="color:var(--ok)">+6.40%</span>
-                </div>
-                <div style="padding:0.55rem 0.7rem;background:#11162B;border:1px solid var(--rule);border-radius:6px;display:flex;justify-content:space-between">
-                  <span style="color:var(--ink)">₳ ADA / IDR</span>
-                  <span style="color:var(--amber)">+2.19%</span>
-                </div>
-              </div>
-            </div>
-
-            <p style="font-size:13px;color:var(--muted)">
-              Includes live interactive 5-page iframe embed (<span class="art">home.html</span>, <span class="art">Cryptocurrency.html</span>, <span class="art">Register.html</span>) with custom regex-free validation rules.
-            </p>
-          </div>
         </div>
-
-        <div class="carousel-footer">
-          <span id="hero-carousel-caption" class="mono" style="color:var(--muted);font-size:11.5px">Slide 1 of 3 • Hover to pause</span>
-          <a id="hero-carousel-cta" href="#project-grocery" class="text-link mono" style="font-size:12px;color:var(--amber)">Open Interactive Workbench</a>
-        </div>
-      </aside>
+      </div>
     </div>
   </section>
 
@@ -283,7 +185,7 @@
       <span class="marquee-pill"><span class="marquee-pill-dot"></span>B-Tree Indexing &amp; WAL Internals</span>
       <span class="marquee-pill"><span class="marquee-pill-dot"></span>Kali Linux &amp; Hashcat Auditing</span>
       <span class="marquee-pill"><span class="marquee-pill-dot"></span>Semantic HTML5, CSS3 &amp; Vanilla JS</span>
-      <!-- Set 2 (Duplicate for seamless -50% infinite loop) -->
+      <!-- Set 2 -->
       <span class="marquee-pill" aria-hidden="true"><span class="marquee-pill-dot"></span>MySQL OLAP &amp; OLTP</span>
       <span class="marquee-pill" aria-hidden="true"><span class="marquee-pill-dot"></span>Pentaho Data Integration (.ktr / .kjb)</span>
       <span class="marquee-pill" aria-hidden="true"><span class="marquee-pill-dot"></span>Star Schema Fact &amp; Dimension Modeling</span>
@@ -299,17 +201,270 @@
 
   <main id="main" class="shell">
 
-    <!-- ==================== SECTION 1: SELECTED ENGINEERING PROJECTS ==================== -->
+    <!-- ==================== AUTO-PLAYING SHOWCASE REEL SECTION ==================== -->
+    <section id="showcase" class="section-block" aria-labelledby="showcase-title">
+      <div class="section-intro" data-reveal="up">
+        <div>
+          <span class="badge badge-amber" style="margin-bottom:0.5rem">Auto-Advancing Project Reel</span>
+          <h2 id="showcase-title" class="section-title">Featured engineering spotlight</h2>
+        </div>
+        <p class="section-sub">Watch the automatic 3-project reel below or click any slide to inspect the data flow, visual dashboards, and live prototypes.</p>
+      </div>
+
+      <div id="hero-carousel" class="hero-carousel" data-reveal="scale" aria-label="Auto-playing project showcase slider">
+        <div class="carousel-topbar">
+          <div style="display:flex;align-items:center;gap:0.55rem">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span class="mono" style="font-size:11.5px;color:var(--ink);font-weight:600">INTERACTIVE_REEL // AUTO_SLIDER</span>
+          </div>
+          <div class="carousel-nav-btns">
+            <button type="button" id="hero-carousel-toggle" class="preset-chip" style="padding:0.2rem 0.55rem;font-size:11px" aria-label="Pause or resume slider">Auto: ON</button>
+            <button type="button" id="hero-carousel-prev" class="icon-btn" aria-label="Previous slide">
+              <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2.5 4 6l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+            </button>
+            <button type="button" id="hero-carousel-next" class="icon-btn" aria-label="Next slide">
+              <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3 Slide Selector Tabs with Animated Progress Bars -->
+        <div class="carousel-tabs" role="tablist" aria-label="Showcase slides">
+          <button type="button" class="carousel-tab" data-hero-tab="0" aria-selected="true">
+            <span class="carousel-tab-title">01. Grocery Basket OLAP</span>
+            <span class="carousel-tab-sub">Pentaho Kettle • MySQL • Power BI</span>
+            <span class="carousel-progress-track"><span class="carousel-progress-bar" data-hero-progress="0"></span></span>
+          </button>
+          <button type="button" class="carousel-tab" data-hero-tab="1" aria-selected="false">
+            <span class="carousel-tab-title">02. JakartaFloodPredict AI</span>
+            <span class="carousel-tab-sub">Scikit-Learn • Streamlit • GeoJSON</span>
+            <span class="carousel-progress-track"><span class="carousel-progress-bar" data-hero-progress="1"></span></span>
+          </button>
+          <button type="button" class="carousel-tab" data-hero-tab="2" aria-selected="false">
+            <span class="carousel-tab-title">03. cryPito Market UI</span>
+            <span class="carousel-tab-sub">5-Page Web App • JS Validator</span>
+            <span class="carousel-progress-track"><span class="carousel-progress-bar" data-hero-progress="2"></span></span>
+          </button>
+        </div>
+
+        <!-- Slide Viewport -->
+        <div class="carousel-viewport">
+          <!-- SLIDE 0: Grocery Basket Analysis Live ETL & Power BI Preview -->
+          <div class="carousel-slide" data-hero-slide="0">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.85rem">
+              <span class="badge badge-amber">End-to-End Star Schema Data Warehouse</span>
+              <span class="mono" style="font-size:12px;color:var(--ok)">1,000 invoices • $322,966.75 verified revenue</span>
+            </div>
+
+            <!-- Animated SVG Data Flow Diagram -->
+            <div style="background:#070A10;border:1px solid var(--rule);border-radius:10px;padding:0.9rem;margin-bottom:1rem">
+              <svg viewBox="0 0 520 96" style="width:100%;height:auto;display:block" role="img" aria-label="Animated ETL pipeline from CSV to Pentaho Kettle, MySQL Star Schema, and Power BI">
+                <line x1="108" y1="48" x2="148" y2="48" stroke="#F5A524" stroke-width="2.5" class="flow-line"/>
+                <line x1="252" y1="48" x2="292" y2="48" stroke="#38BDF8" stroke-width="2.5" class="flow-line"/>
+                <line x1="396" y1="48" x2="426" y2="48" stroke="#34D399" stroke-width="2.5" class="flow-line"/>
+
+                <rect x="6" y="14" width="102" height="68" rx="6" fill="#111722" stroke="#334155"/>
+                <text x="57" y="37" fill="#F3F6FA" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="600" text-anchor="middle">OLTP Staging</text>
+                <text x="57" y="53" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle">1,000 CSV rows</text>
+                <text x="57" y="69" fill="#F5A524" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">3 Branches</text>
+
+                <rect x="148" y="14" width="104" height="68" rx="6" fill="#161F2E" stroke="#F5A524"/>
+                <text x="200" y="37" fill="#F5A524" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="600" text-anchor="middle">Pentaho ETL</text>
+                <text x="200" y="53" fill="#F3F6FA" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle">Orchestration.kjb</text>
+                <text x="200" y="69" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">5 .ktr transforms</text>
+
+                <rect x="292" y="14" width="104" height="68" rx="6" fill="#111722" stroke="#38BDF8"/>
+                <text x="344" y="37" fill="#38BDF8" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="600" text-anchor="middle">MySQL OLAP</text>
+                <text x="344" y="53" fill="#F3F6FA" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle">SalesFact + 4 Dim</text>
+                <text x="344" y="69" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">Star Schema</text>
+
+                <rect x="426" y="14" width="88" height="68" rx="6" fill="#111722" stroke="#34D399"/>
+                <text x="470" y="37" fill="#34D399" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="600" text-anchor="middle">Power BI</text>
+                <text x="470" y="53" fill="#F3F6FA" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle">BI &amp; SQL</text>
+                <text x="470" y="69" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">6.97 Rating</text>
+              </svg>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.85rem">
+              <div style="border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:#07090E">
+                <img src="assets/img/powerbi-dashboard-canvas.svg" alt="Power BI report canvas preview" data-lightbox-src="assets/img/powerbi-dashboard-canvas.svg" data-lightbox-caption="Power BI Executive Dashboard Canvas (VisualizationNew.pbix)" style="display:block;width:100%;height:160px;object-fit:cover;cursor:zoom-in">
+                <div class="mono" style="padding:0.45rem 0.7rem;font-size:11px;color:var(--muted);border-top:1px solid var(--rule)">Power BI Report Canvas (Click to zoom)</div>
+              </div>
+              <div style="border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:#07090E">
+                <img src="assets/img/pentaho-orchestration-canvas.svg" alt="Pentaho Spoon ETL workflow preview" data-lightbox-src="assets/img/pentaho-orchestration-canvas.svg" data-lightbox-caption="Pentaho Data Integration (Spoon) Canvas: Orchestration.kjb & SalesFact.ktr" style="display:block;width:100%;height:160px;object-fit:cover;cursor:zoom-in">
+                <div class="mono" style="padding:0.45rem 0.7rem;font-size:11px;color:var(--muted);border-top:1px solid var(--rule)">Pentaho Spoon .kjb Canvas (Click to zoom)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 1: JakartaFloodPredict AI Preview -->
+          <div class="carousel-slide" data-hero-slide="1" hidden>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.85rem">
+              <span class="badge badge-cyan">Multiple Linear Regression &amp; Spatial Risk Map</span>
+              <span class="mono" style="font-size:12px;color:var(--amber)">R² = 0.5110 • 4,698 Government Flood Records</span>
+            </div>
+
+            <div style="border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:#07090E;margin-bottom:0.85rem">
+              <img src="assets/img/streamlit-flood-app.svg" alt="JakartaFloodPredict AI Streamlit interface preview" data-lightbox-src="assets/img/streamlit-flood-app.svg" data-lightbox-caption="JakartaFloodPredict AI Streamlit Application (Main.py) - Cengkareng Barat Benchmark" style="display:block;width:100%;height:215px;object-fit:cover;cursor:zoom-in">
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.65rem">
+              <div style="background:#090D14;border:1px solid var(--rule);border-radius:8px;padding:0.65rem 0.85rem">
+                <span style="font-size:11.5px;color:var(--muted);display:block">Benchmark RW 01</span>
+                <strong class="mono" style="font-size:16px;color:var(--ink)">42.8 cm</strong>
+              </div>
+              <div style="background:#090D14;border:1px solid var(--amber-border);border-radius:8px;padding:0.65rem 0.85rem">
+                <span style="font-size:11.5px;color:var(--muted);display:block">Alert Status</span>
+                <strong class="mono" style="font-size:15px;color:var(--amber)">WASPADA</strong>
+              </div>
+              <div style="background:#090D14;border:1px solid var(--rule);border-radius:8px;padding:0.65rem 0.85rem">
+                <span style="font-size:11.5px;color:var(--muted);display:block">Coverage</span>
+                <strong class="mono" style="font-size:15px;color:var(--cyan)">5 Cities / RW</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 2: cryPito Market UI Preview -->
+          <div class="carousel-slide" data-hero-slide="2" hidden>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.85rem">
+              <span class="badge badge-ok">Live Embedded 5-Page Web App</span>
+              <span class="mono" style="font-size:12px;color:var(--muted)">HTML5 • CSS3 • Vanilla JS</span>
+            </div>
+
+            <div style="background:#090C18;border:1px solid var(--rule);border-radius:10px;padding:1.1rem;margin-bottom:0.85rem">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
+                <span class="mono" style="font-size:13px;color:var(--ink);font-weight:600">cryPito // Top Performing Assets</span>
+                <span class="badge badge-ok" style="font-size:10.5px">Real-time DOM Filter</span>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0.65rem;font-family:var(--font-mono);font-size:13px">
+                <div style="padding:0.7rem 0.85rem;background:#11162B;border:1px solid var(--rule);border-radius:8px;display:flex;justify-content:space-between">
+                  <span style="color:var(--ink)">₿ BTC / USD</span>
+                  <span style="color:var(--ok)">+4.82%</span>
+                </div>
+                <div style="padding:0.7rem 0.85rem;background:#11162B;border:1px solid var(--rule);border-radius:8px;display:flex;justify-content:space-between">
+                  <span style="color:var(--ink)">Ξ ETH / USD</span>
+                  <span style="color:var(--ok)">+3.15%</span>
+                </div>
+                <div style="padding:0.7rem 0.85rem;background:#11162B;border:1px solid var(--rule);border-radius:8px;display:flex;justify-content:space-between">
+                  <span style="color:var(--ink)">◎ SOL / IDR</span>
+                  <span style="color:var(--ok)">+6.40%</span>
+                </div>
+                <div style="padding:0.7rem 0.85rem;background:#11162B;border:1px solid var(--rule);border-radius:8px;display:flex;justify-content:space-between">
+                  <span style="color:var(--ink)">₳ ADA / IDR</span>
+                  <span style="color:var(--amber)">+2.19%</span>
+                </div>
+              </div>
+            </div>
+
+            <p style="font-size:14px;color:var(--muted)">
+              Includes a live interactive 5-page iframe prototype (<span class="art">home.html</span>, <span class="art">Cryptocurrency.html</span>, <span class="art">Benefits.html</span>, <span class="art">Learn_more.html</span>, <span class="art">Register.html</span>) with instant ticker search and client-side form validation.
+            </p>
+          </div>
+        </div>
+
+        <div class="carousel-footer">
+          <span id="hero-carousel-caption" class="mono" style="color:var(--muted);font-size:11.5px">Slide 1 of 3 • Hover to pause</span>
+          <a id="hero-carousel-cta" href="#project-grocery" class="btn btn-amber btn-sm">Jump to Interactive Workbench</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 1: ASYMMETRIC BENTO TECH STACK ==================== -->
+    <section id="stack" class="section-block" aria-labelledby="stack-title">
+      <div class="section-intro" data-reveal="up">
+        <div>
+          <span class="badge badge-cyan" style="margin-bottom:0.5rem">Asymmetric Bento Architecture</span>
+          <h2 id="stack-title" class="section-title">Technical ecosystem &amp; capabilities</h2>
+        </div>
+        <p class="section-sub">Move your cursor across any Bento module below. Database architecture and ETL automation are my core specialization, backed by Python machine learning and network security coursework.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Bento Cell 1 (2x1 Primary Spotlight): Database & OLAP -->
+        <article class="bento-cell bento-span-2" data-reveal="left">
+          <span class="bento-kicker">● PRIMARY SPECIALIZATION // DATABASE TECHNOLOGY</span>
+          <h3 class="bento-title">Relational &amp; OLAP Data Warehouse Architecture</h3>
+          <p style="margin-top:0.5rem;font-size:14.5px;color:var(--muted);max-width:62ch">
+            Designing normalized OLTP staging schemas and denormalized Star Schema data marts (<span class="art">Fact</span> &amp; <span class="art">Dimension</span> modeling) in <span class="art">MySQL</span> and <span class="art">PostgreSQL</span>, backed by procedural SQL and storage internals.
+          </p>
+          <div style="margin-top:1.1rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0.75rem">
+            <div style="background:rgba(7,9,14,0.65);border:1px solid var(--rule);border-radius:10px;padding:0.85rem">
+              <strong style="font-size:13px;color:var(--ink);display:block">OLAP &amp; Dimensional Modeling</strong>
+              <span style="font-size:12.5px;color:var(--muted)">Star Schema, surrogate keys, grain enforcement, high-water mark incremental loads.</span>
+            </div>
+            <div style="background:rgba(7,9,14,0.65);border:1px solid var(--rule);border-radius:10px;padding:0.85rem">
+              <strong style="font-size:13px;color:var(--ink);display:block">Procedural SQL &amp; Internals</strong>
+              <span style="font-size:12.5px;color:var(--muted)">Stored Procedures, Triggers, Cursors, B-Tree Indexing, Transaction Isolation, WAL.</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Bento Cell 2: ETL & BI -->
+        <article class="bento-cell" data-reveal="right" style="--reveal-delay:90ms">
+          <span class="bento-kicker" style="color:var(--ok)">● PIPELINE ORCHESTRATION</span>
+          <h3 class="bento-title">Pentaho Kettle &amp; BI</h3>
+          <p style="margin-top:0.5rem;font-size:14px;color:var(--muted)">
+            Automated multi-step <span class="art">.ktr</span> transformations and <span class="art">.kjb</span> job flows with <span class="art">Combination lookup/update</span> and <span class="art">Unique rows (HashSet)</span> deduplication, feeding <span class="art">Power BI</span>, <span class="art">Tableau</span>, and <span class="art">QGIS</span>.
+          </p>
+          <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.35rem">
+            <span class="art">Pentaho PDI</span>
+            <span class="art">Power BI</span>
+            <span class="art">Tableau</span>
+            <span class="art">QGIS</span>
+          </div>
+        </article>
+
+        <!-- Bento Cell 3: Python & Machine Learning -->
+        <article class="bento-cell bento-cell-cyan" data-reveal="left" style="--reveal-delay:60ms">
+          <span class="bento-kicker" style="color:var(--cyan)">● AI &amp; DATA SCIENCE</span>
+          <h3 class="bento-title">Machine Learning &amp; Spatial Apps</h3>
+          <p style="margin-top:0.5rem;font-size:14px;color:var(--muted)">
+            Predictive modeling with <span class="art">Scikit-Learn</span> (Multiple Linear Regression, TF-IDF, Collaborative Filtering), data wrangling in <span class="art">Pandas</span> &amp; <span class="art">NumPy</span>, and interactive deployment with <span class="art">Streamlit</span> &amp; <span class="art">Plotly GeoJSON</span>.
+          </p>
+        </article>
+
+        <!-- Bento Cell 4: Multi-Language Programming -->
+        <article class="bento-cell" data-reveal="up" style="--reveal-delay:120ms">
+          <span class="bento-kicker">● CORE LANGUAGES</span>
+          <h3 class="bento-title">Backend &amp; Algorithmic Foundations</h3>
+          <p style="margin-top:0.5rem;font-size:14px;color:var(--muted)">
+            Competitive programming participant in the <strong>Indonesia National Contest (INC)</strong> with hands-on proficiency across five languages:
+          </p>
+          <div style="margin-top:0.9rem;display:flex;flex-wrap:wrap;gap:0.45rem">
+            <span class="badge badge-amber">SQL</span>
+            <span class="badge badge-cyan">Python</span>
+            <span class="badge badge-ok">Java</span>
+            <span class="art">C</span>
+            <span class="art">R</span>
+            <span class="art">JavaScript</span>
+          </div>
+        </article>
+
+        <!-- Bento Cell 5: Network Security & Web -->
+        <article class="bento-cell bento-cell-cyan" data-reveal="right" style="--reveal-delay:160ms">
+          <span class="bento-kicker" style="color:var(--cyan)">● ELECTIVE TRACK</span>
+          <h3 class="bento-title">Network Security &amp; Web UI</h3>
+          <p style="margin-top:0.5rem;font-size:14px;color:var(--muted)">
+            <span class="art">Kali Linux</span>, <span class="art">Hashcat</span> password auditing, Access Control analysis, Network &amp; NFS protocol inspection, active reconnaissance (<span class="art">TryHackMe</span>), plus semantic <span class="art">HTML5/CSS3/JS</span> &amp; <span class="art">Figma</span>.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: SELECTED ENGINEERING PROJECTS ==================== -->
     <section id="projects" class="section-block" aria-labelledby="projects-title">
-      <div class="section-intro">
-        <h2 id="projects-title" class="section-title">Selected engineering projects</h2>
-        <p class="section-sub">Every project combines an auto-playing visual showcase with a live interactive workbench powered by its real dataset or source code. Filter 1,000 warehouse rows, execute SQL in-browser, simulate Jakarta flood depth by RW, or test the embedded 5-page web app.</p>
+      <div class="section-intro" data-reveal="up">
+        <div>
+          <span class="badge badge-amber" style="margin-bottom:0.5rem">Interactive Engineering Case Studies</span>
+          <h2 id="projects-title" class="section-title">Selected engineering works</h2>
+        </div>
+        <p class="section-sub">Each project below pairs an auto-playing visual showcase with a live interactive workbench powered by its real dataset or source code.</p>
       </div>
 
       <!-- =====================================================================
-           PROJECT 1: GROCERY BASKET ANALYSIS
+           PROJECT 1: GROCERY BASKET ANALYSIS (AMBER THEME)
            ===================================================================== -->
-      <article id="project-grocery" class="project-card" aria-labelledby="p1-heading">
+      <article id="project-grocery" class="project-card" data-reveal="up" aria-labelledby="p1-heading">
         <header class="project-header">
           <div>
             <span class="badge badge-amber">Project 01 // Data Engineering &amp; OLAP Warehouse</span>
@@ -397,7 +552,6 @@
             </div>
           </div>
 
-          <!-- Filter Bar -->
           <div class="filter-bar">
             <div class="control-field">
               <label for="g-filter-city">City (LocationDimension)</label>
@@ -452,7 +606,6 @@
             </div>
           </div>
 
-          <!-- 4 KPI Cards -->
           <div class="kpi-grid" style="margin-top:1rem">
             <div class="kpi-card">
               <p class="kpi-label">Total Revenue Tracked</p>
@@ -476,7 +629,6 @@
             </div>
           </div>
 
-          <!-- Charts Grid -->
           <div class="dash-grid">
             <div class="panel-card">
               <div class="panel-head">
@@ -506,7 +658,6 @@
             </div>
           </div>
 
-          <!-- Sample Fact Rows Table -->
           <div style="margin-top:1.25rem">
             <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:0.5rem">
               <h4 class="panel-title">Sample matching records from <span class="mono">olap.SalesFact</span></h4>
@@ -773,9 +924,9 @@
       </article>
 
       <!-- =====================================================================
-           PROJECT 2: JAKARTAFLOODPREDICT AI
+           PROJECT 2: JAKARTAFLOODPREDICT AI (CYAN THEME)
            ===================================================================== -->
-      <article id="project-flood" class="project-card" aria-labelledby="p2-heading">
+      <article id="project-flood" class="project-card project-card-cyan" data-reveal="up" aria-labelledby="p2-heading">
         <header class="project-header">
           <div>
             <span class="badge badge-cyan">Project 02 // Machine Learning &amp; Geospatial App</span>
@@ -822,7 +973,6 @@
             </div>
           </div>
 
-          <!-- Cascading Location Selector -->
           <div class="filter-bar">
             <div class="control-field">
               <label for="f-sel-kota">Kota Administrasi</label>
@@ -842,9 +992,7 @@
             </div>
           </div>
 
-          <!-- Simulator Two-Column Workbench -->
           <div class="flood-workbench" style="margin-top:1.25rem">
-            <!-- Left: Weather Controls + Prediction Output -->
             <div class="panel-card" style="display:flex;flex-direction:column;justify-content:space-between;gap:1.25rem">
               <div>
                 <div class="panel-head">
@@ -877,7 +1025,6 @@
                 </div>
               </div>
 
-              <!-- Prediction Readout -->
               <div style="border-top:1px solid var(--rule);padding-top:1.1rem" aria-live="polite">
                 <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:1rem;align-items:end">
                   <div>
@@ -907,7 +1054,6 @@
               </div>
             </div>
 
-            <!-- Right: Interactive Choropleth Map -->
             <div class="panel-card">
               <div class="panel-head">
                 <h4 class="panel-title">Spatial risk map (<span class="mono">jakarta_geo.json</span>)</h4>
@@ -1052,9 +1198,9 @@ final_pred_rw = pred_base * factor_rw</pre>
       </article>
 
       <!-- =====================================================================
-           PROJECT 3: CRYPITO
+           PROJECT 3: CRYPITO (EMERALD THEME)
            ===================================================================== -->
-      <article id="project-crypito" class="project-card" aria-labelledby="p3-heading">
+      <article id="project-crypito" class="project-card project-card-ok" data-reveal="up" aria-labelledby="p3-heading">
         <header class="project-header">
           <div>
             <span class="badge badge-ok">Project 03 // Frontend Engineering &amp; HCI</span>
@@ -1088,7 +1234,6 @@ final_pred_rw = pred_base * factor_rw</pre>
 
         <!-- TAB 1: Live Interactive Embed -->
         <section role="tabpanel" id="c-panel-live" aria-labelledby="c-tab-live" class="wb-panel">
-          <!-- Desktop / Tablet Live Browser Frame -->
           <div class="browser-frame browser-desktop-embed">
             <div class="browser-chrome">
               <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -1114,7 +1259,6 @@ final_pred_rw = pred_base * factor_rw</pre>
             </div>
           </div>
 
-          <!-- Mobile Fallback (clean launcher cards) -->
           <div class="browser-mobile-fallback panel-card">
             <h4 class="panel-title">Launch live cryPito prototype</h4>
             <p style="margin-top:0.35rem;font-size:13.5px;color:var(--muted)">On mobile screens, open any of the 5 prototype pages in a full-screen tab to test the layout, coin search, and registration validator:</p>
@@ -1198,148 +1342,79 @@ final_pred_rw = pred_base * factor_rw</pre>
       </article>
     </section>
 
-    <!-- ==================== SECTION 2: TECHNICAL STACK ==================== -->
-    <section id="stack" class="section-block" aria-labelledby="stack-title">
-      <div class="section-intro">
-        <h2 id="stack-title" class="section-title">Technical stack</h2>
-        <p class="section-sub">Database architecture and ETL automation are my primary discipline, backed by Python data modeling and network security coursework.</p>
-      </div>
-
-      <div class="stack-grid">
-        <!-- Column 1: Primary Focus -->
-        <article class="stack-col">
-          <h3 class="stack-col-title">Database &amp; Data Engineering</h3>
-          <p class="stack-col-note">Primary specialization</p>
-          <dl class="stack-dl">
-            <div>
-              <dt>Relational &amp; OLAP Modeling</dt>
-              <dd>Star Schema design, Fact &amp; Dimension modeling, <span class="art">MySQL</span>, <span class="art">PostgreSQL</span>.</dd>
-            </div>
-            <div>
-              <dt>Procedural SQL &amp; Internals</dt>
-              <dd>Complex joins, Stored Procedures, Triggers, Cursors, B-Tree Indexing, Transaction Isolation, Write-Ahead Logging (WAL).</dd>
-            </div>
-            <div>
-              <dt>ETL &amp; Orchestration</dt>
-              <dd>Pentaho Data Integration (Kettle <span class="art">.ktr</span> transformations &amp; <span class="art">.kjb</span> jobs), data cleansing, CSV/relational ingestion.</dd>
-            </div>
-            <div>
-              <dt>Business Intelligence</dt>
-              <dd><span class="art">Microsoft Power BI</span>, <span class="art">Tableau</span>, <span class="art">QGIS</span> spatial analysis, data mart reporting.</dd>
-            </div>
-          </dl>
-        </article>
-
-        <!-- Column 2 -->
-        <article class="stack-col">
-          <h3 class="stack-col-title">Programming, AI &amp; Data Science</h3>
-          <p class="stack-col-note" style="color:var(--muted)">Analytical &amp; backend tooling</p>
-          <dl class="stack-dl">
-            <div>
-              <dt>Languages</dt>
-              <dd style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.4rem">
-                <span class="art">Python</span>
-                <span class="art">SQL</span>
-                <span class="art">Java</span>
-                <span class="art">C</span>
-                <span class="art">R</span>
-              </dd>
-            </div>
-            <div>
-              <dt>Machine Learning &amp; Analytics</dt>
-              <dd><span class="art">Scikit-Learn</span> (Multiple Linear Regression), <span class="art">Pandas</span>, <span class="art">NumPy</span>, TF-IDF &amp; Collaborative Filtering.</dd>
-            </div>
-            <div>
-              <dt>Data Apps &amp; Visualization</dt>
-              <dd><span class="art">Streamlit</span>, <span class="art">Plotly Express</span>, GeoJSON spatial mapping.</dd>
-            </div>
-          </dl>
-        </article>
-
-        <!-- Column 3 -->
-        <article class="stack-col">
-          <h3 class="stack-col-title">Network Security &amp; Web Foundations</h3>
-          <p class="stack-col-note" style="color:var(--muted)">Systems &amp; interface coursework</p>
-          <dl class="stack-dl">
-            <div>
-              <dt>Security Fundamentals</dt>
-              <dd><span class="art">Kali Linux</span>, <span class="art">Hashcat</span> password auditing, Access Control analysis, Network &amp; NFS protocol inspection, active reconnaissance (TryHackMe labs).</dd>
-            </div>
-            <div>
-              <dt>Frontend &amp; Prototyping</dt>
-              <dd>Semantic <span class="art">HTML5</span>, <span class="art">CSS3</span>, <span class="art">JavaScript</span>, <span class="art">Figma</span> UI/UX wireframing.</dd>
-            </div>
-          </dl>
-        </article>
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 3: LEADERSHIP, OPERATIONS & EDUCATION ==================== -->
+    <!-- ==================== SECTION 3: ANIMATED VERTICAL EXPERIENCE TIMELINE ==================== -->
     <section id="experience" class="section-block" aria-labelledby="exp-title">
-      <div class="section-intro">
-        <h2 id="exp-title" class="section-title">Leadership, operations &amp; education</h2>
-        <p class="section-sub">Operational roles and student organizations where the job was keeping schedules, budgets, and multi-team handoffs accurate.</p>
+      <div class="section-intro" data-reveal="up">
+        <div>
+          <span class="badge badge-ok" style="margin-bottom:0.5rem">Leadership, Operations &amp; Education</span>
+          <h2 id="exp-title" class="section-title">Operational &amp; academic journey</h2>
+        </div>
+        <p class="section-sub">Scroll up or down to trace my operational roles, student leadership milestones, and Computer Science track at BINUS University.</p>
       </div>
 
-      <div class="data-table-wrap">
-        <table class="data-table" style="white-space:normal">
-          <thead>
-            <tr>
-              <th style="width:34%">Organization &amp; Role</th>
-              <th>Operational Impact</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="vertical-align:top">
-                <strong style="color:var(--ink);display:block;font-size:14.5px">KMBD (Student Organization at BINUS University)</strong>
-                <span class="mono" style="font-size:12px;color:var(--amber);display:block;margin-top:0.2rem">Event Division &amp; Scriptwriter (Malam Keakraban 2025) / Public Relations &amp; Entrepreneurship Officer</span>
-              </td>
-              <td style="vertical-align:top;font-size:14px;color:var(--muted)">
-                Coordinated rundown execution across 5 committee divisions for a two-day onboarding event with 100 participants. Authored the complete master script and managed real-time stage transitions, resulting in zero schedule delays.
-              </td>
-            </tr>
-            <tr>
-              <td style="vertical-align:top">
-                <strong style="color:var(--ink);display:block;font-size:14.5px">DV Teach Student Event</strong>
-                <span class="mono" style="font-size:12px;color:var(--amber);display:block;margin-top:0.2rem">Event Treasurer • Oct 2025 to Nov 2025</span>
-              </td>
-              <td style="vertical-align:top;font-size:14px;color:var(--muted)">
-                Managed budget allocation, transaction tracking, and financial reporting for committee operations across a total budget of IDR 3,000,000 and 15 committee members with zero discrepancies.
-              </td>
-            </tr>
-            <tr>
-              <td style="vertical-align:top">
-                <strong style="color:var(--ink);display:block;font-size:14.5px">Dino Play</strong>
-                <span class="mono" style="font-size:12px;color:var(--muted);display:block;margin-top:0.2rem">Part-Time Operations Staff • 2024 to 2025</span>
-              </td>
-              <td style="vertical-align:top;font-size:14px;color:var(--muted)">
-                Managed daily operations of 5 amusement rides in a high-traffic mall environment, serving an average of 50 visitors per day and peak loads up to 200 customers while handling transaction tracking, safety protocols, and machine troubleshooting with a 3-person shift team.
-              </td>
-            </tr>
-            <tr>
-              <td style="vertical-align:top">
-                <strong style="color:var(--ink);display:block;font-size:14.5px">BINUS University</strong>
-                <span class="mono" style="font-size:12px;color:var(--muted);display:block;margin-top:0.2rem">Bachelor of Computer Science (Database Technology)</span>
-              </td>
-              <td style="vertical-align:top;font-size:14px;color:var(--muted)">
-                Current GPA: <strong class="mono" style="color:var(--ink)">3.10 / 4.00</strong>. Competitive programming participant in the <strong style="color:var(--ink)">Indonesia National Contest (INC)</strong>. Former Chairperson of HIKADACITA (2023 to 2024), leading 21 members across weekly operations and three major outdoor events.
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="timeline-list">
+        <article class="timeline-card" data-reveal="left">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:0.5rem">
+            <h3 style="font-size:1.15rem;font-weight:700;color:var(--ink)">KMBD (Student Organization at BINUS University)</h3>
+            <span class="badge badge-amber">2024 to 2025</span>
+          </div>
+          <p class="mono" style="font-size:12.5px;color:var(--amber);margin-top:0.2rem">Event Division &amp; Scriptwriter (Malam Keakraban 2025) • Public Relations &amp; Entrepreneurship Officer</p>
+          <p style="margin-top:0.55rem;font-size:14.5px;color:var(--muted)">
+            Coordinated rundown execution across 5 committee divisions for a two-day onboarding event with 100 participants. Authored the complete master script and managed real-time stage transitions, resulting in zero schedule delays.
+          </p>
+        </article>
+
+        <article class="timeline-card" data-reveal="right" style="--reveal-delay:80ms">
+          <span class="timeline-dot" style="background:var(--cyan);box-shadow:0 0 12px var(--cyan)" aria-hidden="true"></span>
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:0.5rem">
+            <h3 style="font-size:1.15rem;font-weight:700;color:var(--ink)">DV Teach Student Event</h3>
+            <span class="badge badge-cyan">Oct 2025 to Nov 2025</span>
+          </div>
+          <p class="mono" style="font-size:12.5px;color:var(--cyan);margin-top:0.2rem">Event Treasurer</p>
+          <p style="margin-top:0.55rem;font-size:14.5px;color:var(--muted)">
+            Managed budget allocation, transaction tracking, and financial reporting for committee operations across a total budget of IDR 3,000,000 and 15 committee members with zero discrepancies.
+          </p>
+        </article>
+
+        <article class="timeline-card" data-reveal="left" style="--reveal-delay:120ms">
+          <span class="timeline-dot" style="background:var(--ok);box-shadow:0 0 12px var(--ok)" aria-hidden="true"></span>
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:0.5rem">
+            <h3 style="font-size:1.15rem;font-weight:700;color:var(--ink)">Dino Play</h3>
+            <span class="badge badge-ok">2024 to 2025</span>
+          </div>
+          <p class="mono" style="font-size:12.5px;color:var(--ok);margin-top:0.2rem">Part-Time Operations Staff</p>
+          <p style="margin-top:0.55rem;font-size:14.5px;color:var(--muted)">
+            Managed daily operations of 5 amusement rides in a high-traffic mall environment, serving an average of 50 visitors per day and peak loads up to 200 customers while handling transaction tracking, safety protocols, and machine troubleshooting with a 3-person shift team.
+          </p>
+        </article>
+
+        <article class="timeline-card" data-reveal="right" style="--reveal-delay:160ms">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:0.5rem">
+            <h3 style="font-size:1.15rem;font-weight:700;color:var(--ink)">BINUS University</h3>
+            <span class="badge badge-amber">2024 to 2028 (Expected)</span>
+          </div>
+          <p class="mono" style="font-size:12.5px;color:var(--amber);margin-top:0.2rem">Bachelor of Computer Science (Database Technology Streaming)</p>
+          <p style="margin-top:0.55rem;font-size:14.5px;color:var(--muted)">
+            Current GPA: <strong class="mono" style="color:var(--ink)">3.10 / 4.00</strong>. Competitive programming participant in the <strong style="color:var(--ink)">Indonesia National Contest (INC)</strong>. Former Chairperson of HIKADACITA (2023 to 2024), leading 21 members across weekly operations and three major outdoor events.
+          </p>
+        </article>
       </div>
     </section>
 
     <!-- ==================== SECTION 4: CONTACT ==================== -->
-    <section id="contact" class="section-block" style="border-bottom:0" aria-labelledby="contact-title">
-      <div class="section-intro">
-        <h2 id="contact-title" class="section-title">Contact</h2>
-        <p class="section-sub">Email is the fastest way to reach me. Phone and WhatsApp are open for internship interview scheduling.</p>
+    <section id="contact" class="section-block" style="border-bottom:0;padding-bottom:5.5rem" aria-labelledby="contact-title">
+      <div class="section-intro" data-reveal="up">
+        <div>
+          <span class="badge badge-amber" style="margin-bottom:0.5rem">Direct Channels</span>
+          <h2 id="contact-title" class="section-title">Let's build reliable data systems</h2>
+        </div>
+        <p class="section-sub">Email is the fastest way to reach me. Phone and WhatsApp are open for 1-year internship interview scheduling.</p>
       </div>
 
-      <div style="border:1px solid var(--rule-strong);border-radius:12px;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--rule)">
-        <div style="background:var(--bg-panel);padding:1.25rem 1.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.75rem">
+      <div data-reveal="scale" style="border:1px solid var(--rule-strong);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--rule)">
+        <div style="background:var(--bg-panel);padding:1.35rem 1.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.75rem">
           <div>
             <p style="font-size:12px;color:var(--muted)">Email</p>
             <a id="email-value" href="mailto:farellino.audric@binus.ac.id" class="mono text-link" style="font-size:14px">farellino.audric@binus.ac.id</a>
@@ -1349,7 +1424,7 @@ final_pred_rw = pred_base * factor_rw</pre>
           </button>
         </div>
 
-        <div style="background:var(--bg-panel);padding:1.25rem 1.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.75rem">
+        <div style="background:var(--bg-panel);padding:1.35rem 1.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.75rem">
           <div>
             <p style="font-size:12px;color:var(--muted)">Phone / WhatsApp</p>
             <a href="tel:+6281219991680" class="mono text-link tnum" style="font-size:14px">+62 812-1999-1680</a>
@@ -1358,22 +1433,22 @@ final_pred_rw = pred_base * factor_rw</pre>
           <a href="https://wa.me/6281219991680" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Open WhatsApp</a>
         </div>
 
-        <div style="background:var(--bg-panel);padding:1.25rem 1.5rem">
+        <div style="background:var(--bg-panel);padding:1.35rem 1.5rem">
           <p style="font-size:12px;color:var(--muted)">LinkedIn</p>
           <a href="https://www.linkedin.com/in/farellino-audric-b39799325" target="_blank" rel="noopener noreferrer" class="mono text-link" style="font-size:13.5px">linkedin.com/in/farellino-audric</a>
         </div>
 
-        <div style="background:var(--bg-panel);padding:1.25rem 1.5rem">
+        <div style="background:var(--bg-panel);padding:1.35rem 1.5rem">
           <p style="font-size:12px;color:var(--muted)">GitHub</p>
           <a href="https://github.com/MarcelFarel" target="_blank" rel="noopener noreferrer" class="mono text-link" style="font-size:13.5px">github.com/MarcelFarel</a>
         </div>
 
-        <div style="background:var(--bg-panel);padding:1.25rem 1.5rem">
+        <div style="background:var(--bg-panel);padding:1.35rem 1.5rem">
           <p style="font-size:12px;color:var(--muted)">Instagram &amp; Location</p>
           <p style="font-size:13.5px;color:var(--ink)"><a href="https://www.instagram.com/marcel.farel" target="_blank" rel="noopener noreferrer" class="mono text-link">@marcel.farel</a> • Jakarta / Tangerang, Indonesia</p>
         </div>
 
-        <div id="cv-download" style="background:var(--bg-panel);padding:1.25rem 1.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.75rem">
+        <div id="cv-download" style="background:var(--bg-panel);padding:1.35rem 1.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.75rem">
           <div>
             <p style="font-size:12px;color:var(--muted)">Curriculum Vitae</p>
             <span class="mono" style="font-size:13.5px;color:var(--ink)">Farellino Audric_CV.pdf</span>
@@ -1436,8 +1511,8 @@ final_pred_rw = pred_base * factor_rw</pre>
   </div>
 
   <footer style="border-top:1px solid var(--rule)">
-    <div class="shell" style="padding:1.25rem 2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.75rem;font-size:13px;color:var(--muted)">
-      <span style="color:var(--ink);font-weight:500">Farellino Audric</span>
+    <div class="shell" style="padding:1.25rem 2rem 5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.75rem;font-size:13px;color:var(--muted)">
+      <span style="color:var(--ink);font-weight:600">Farellino Audric</span>
       <span class="mono">Computer Science (Database Technology) • BINUS University • 2026</span>
     </div>
   </footer>

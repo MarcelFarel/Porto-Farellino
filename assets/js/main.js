@@ -4,7 +4,146 @@
   var qs = function (s, r) { return (r || document).querySelector(s); };
   var qsa = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  /* ---------- 1. Accessible Tabs (Workbenches & Pipeline Steps) ---------- */
+  /* ---------- 1. Bidirectional Scroll-Driven Reveal Engine ---------- */
+  var revealEls = qsa('[data-reveal]');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        } else {
+          /* Re-trigger transition whether scrolling up or down */
+          entry.target.classList.remove('is-visible');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealEls.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* ---------- 2. Scroll Progress Bar & Floating Section Dock ---------- */
+  var scrollBar = qs('#scroll-progress');
+  var dockLinks = qsa('[data-dock-link]');
+  var trackedSections = ['top', 'showcase', 'stack', 'projects', 'experience', 'contact']
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+
+  function onWindowScroll() {
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollBar && docHeight > 0) {
+      var pct = Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
+      scrollBar.style.width = pct.toFixed(1) + '%';
+    }
+
+    if (trackedSections.length && dockLinks.length) {
+      var activeId = trackedSections[0].id;
+      var probeY = scrollTop + window.innerHeight * 0.34;
+      trackedSections.forEach(function (sec) {
+        if (sec.offsetTop <= probeY) {
+          activeId = sec.id;
+        }
+      });
+      dockLinks.forEach(function (link) {
+        var match = link.getAttribute('data-dock-link') === activeId;
+        link.classList.toggle('is-active', match);
+      });
+    }
+  }
+  window.addEventListener('scroll', onWindowScroll, { passive: true });
+  onWindowScroll();
+
+  /* ---------- 3. Hero Dynamic Role Rotator ---------- */
+  var roleEl = qs('#role-rotator');
+  if (roleEl) {
+    var roles = [
+      'Database Technology & OLAP',
+      'Data Engineering & Pentaho ETL',
+      'Backend Systems & SQL Optimization',
+      'Python Machine Learning & Analytics'
+    ];
+    var roleIdx = 0;
+    setInterval(function () {
+      if (document.hidden) return;
+      roleIdx = (roleIdx + 1) % roles.length;
+      roleEl.style.opacity = '0';
+      roleEl.style.transform = 'translateY(6px)';
+      setTimeout(function () {
+        roleEl.textContent = roles[roleIdx];
+        roleEl.style.opacity = '1';
+        roleEl.style.transform = 'translateY(0)';
+      }, 220);
+    }, 2900);
+  }
+
+  /* ---------- 4. Interactive 3D-Tilt Portrait Card & Photo Loader ---------- */
+  var portraitCard = qs('#portrait-card');
+  var photoImg = qs('#profile-photo-img');
+  var uploadBtn = qs('#profile-upload-btn');
+  var fileInput = qs('#profile-file-input');
+
+  if (portraitCard) {
+    portraitCard.addEventListener('mousemove', function (e) {
+      var rect = portraitCard.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      portraitCard.style.setProperty('--rx', (-y * 10).toFixed(2) + 'deg');
+      portraitCard.style.setProperty('--ry', (x * 10).toFixed(2) + 'deg');
+    });
+    portraitCard.addEventListener('mouseleave', function () {
+      portraitCard.style.setProperty('--rx', '0deg');
+      portraitCard.style.setProperty('--ry', '0deg');
+    });
+  }
+
+  if (photoImg) {
+    try {
+      var savedPhoto = localStorage.getItem('farellino_profile_photo');
+      if (savedPhoto) {
+        photoImg.src = savedPhoto;
+      } else {
+        /* Automatically check if user placed assets/img/profile.jpg */
+        var probeImg = new Image();
+        probeImg.onload = function () { photoImg.src = 'assets/img/profile.jpg'; };
+        probeImg.src = 'assets/img/profile.jpg';
+      }
+    } catch (err) {}
+  }
+
+  if (uploadBtn && fileInput && photoImg) {
+    uploadBtn.addEventListener('click', function () {
+      fileInput.click();
+    });
+    fileInput.addEventListener('change', function () {
+      var file = fileInput.files && fileInput.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function (ev) {
+        var dataUrl = ev.target.result;
+        photoImg.src = dataUrl;
+        try { localStorage.setItem('farellino_profile_photo', dataUrl); } catch (err) {}
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /* ---------- 5. Bento Grid Cursor Spotlight ---------- */
+  qsa('.bento-cell').forEach(function (cell) {
+    cell.addEventListener('mousemove', function (e) {
+      var r = cell.getBoundingClientRect();
+      cell.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      cell.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  /* ---------- 6. Accessible Tabs (Workbenches & Pipeline Steps) ---------- */
   function initTablist(list) {
     if (list.classList.contains('carousel-tabs') || list.classList.contains('slider-dots')) return;
     var tabs = qsa('[role="tab"]', list);
@@ -36,7 +175,7 @@
   }
   qsa('[role="tablist"]').forEach(initTablist);
 
-  /* ---------- 2. Auto-Playing Hero Showcase Carousel ---------- */
+  /* ---------- 7. Auto-Playing Showcase Carousel ---------- */
   var heroCarousel = qs('#hero-carousel');
   if (heroCarousel) {
     var heroTabs = qsa('[data-hero-tab]', heroCarousel);
@@ -130,7 +269,7 @@
     requestAnimationFrame(tickHero);
   }
 
-  /* ---------- 3. Auto-Playing Project Media Sliders ---------- */
+  /* ---------- 8. Auto-Playing Project Media Sliders ---------- */
   qsa('[data-auto-slider]').forEach(function (slider) {
     var items = qsa('.media-slide-item', slider);
     var dots = qsa('[data-slider-dot]', slider);
@@ -172,7 +311,7 @@
     }, 4200);
   });
 
-  /* ---------- 4. Full-Screen Image Lightbox ---------- */
+  /* ---------- 9. Full-Screen Image Lightbox ---------- */
   var lightboxModal = qs('#lightbox-modal');
   var lightboxImg = qs('#lightbox-img');
   var lightboxCaption = qs('#lightbox-caption');
@@ -210,7 +349,7 @@
     });
   }
 
-  /* ---------- 5. Quick Command Palette (Ctrl+K / Cmd+K) ---------- */
+  /* ---------- 10. Quick Command Palette (Ctrl+K / Cmd+K) ---------- */
   var cmdModal = qs('#cmd-modal');
   var cmdTrigger = qs('#cmd-trigger');
   var cmdClose = qs('#cmd-close');
@@ -282,7 +421,7 @@
     }
   });
 
-  /* ---------- 6. Mobile Menu ---------- */
+  /* ---------- 11. Mobile Menu ---------- */
   var menuBtn = qs('#menu-btn');
   var mobileMenu = qs('#mobile-menu');
   if (menuBtn && mobileMenu) {
@@ -299,7 +438,7 @@
     });
   }
 
-  /* ---------- 7. cryPito Browser Frame Controller ---------- */
+  /* ---------- 12. cryPito Browser Frame Controller ---------- */
   var cryFrame = qs('#crypito-iframe');
   var cryUrl = qs('#crypito-url');
   var cryOpenLink = qs('#crypito-open-new');
@@ -339,7 +478,7 @@
     });
   });
 
-  /* ---------- 8. Copy Email ---------- */
+  /* ---------- 13. Copy Email ---------- */
   var copyBtn = qs('#copy-email');
   var copyLabel = copyBtn ? qs('[data-copy-label]', copyBtn) : null;
   var copyStatus = qs('#copy-status');
