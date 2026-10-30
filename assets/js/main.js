@@ -4,8 +4,9 @@
   var qs = function (s, r) { return (r || document).querySelector(s); };
   var qsa = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  /* ---------- Accessible Tabs (Workbenches & Pipeline Steps) ---------- */
+  /* ---------- 1. Accessible Tabs (Workbenches & Pipeline Steps) ---------- */
   function initTablist(list) {
+    if (list.classList.contains('carousel-tabs') || list.classList.contains('slider-dots')) return;
     var tabs = qsa('[role="tab"]', list);
     function select(tab, moveFocus) {
       tabs.forEach(function (t) {
@@ -35,7 +36,253 @@
   }
   qsa('[role="tablist"]').forEach(initTablist);
 
-  /* ---------- Mobile Menu ---------- */
+  /* ---------- 2. Auto-Playing Hero Showcase Carousel ---------- */
+  var heroCarousel = qs('#hero-carousel');
+  if (heroCarousel) {
+    var heroTabs = qsa('[data-hero-tab]', heroCarousel);
+    var heroSlides = qsa('[data-hero-slide]', heroCarousel);
+    var heroBars = qsa('[data-hero-progress]', heroCarousel);
+    var heroPrev = qs('#hero-carousel-prev', heroCarousel);
+    var heroNext = qs('#hero-carousel-next', heroCarousel);
+    var heroToggle = qs('#hero-carousel-toggle', heroCarousel);
+    var heroCaption = qs('#hero-carousel-caption', heroCarousel);
+    var heroCta = qs('#hero-carousel-cta', heroCarousel);
+
+    var slideTargets = [
+      { href: '#project-grocery', label: 'Open Grocery OLAP Workbench' },
+      { href: '#project-flood', label: 'Open Flood Risk Simulator' },
+      { href: '#project-crypito', label: 'Open cryPito Live App' }
+    ];
+
+    var heroIdx = 0;
+    var heroDuration = 4600;
+    var heroElapsed = 0;
+    var heroLastTick = performance.now();
+    var heroAuto = true;
+    var heroHover = false;
+
+    function setHeroSlide(idx) {
+      heroIdx = (idx + heroSlides.length) % heroSlides.length;
+      heroElapsed = 0;
+      heroTabs.forEach(function (t, i) {
+        t.setAttribute('aria-selected', String(i === heroIdx));
+      });
+      heroSlides.forEach(function (s, i) {
+        s.hidden = i !== heroIdx;
+      });
+      heroBars.forEach(function (b, i) {
+        b.style.width = i < heroIdx ? '100%' : '0%';
+      });
+      if (heroCaption) {
+        heroCaption.textContent = 'Slide ' + (heroIdx + 1) + ' of ' + heroSlides.length + (heroAuto ? ' • Hover to pause' : ' • Paused');
+      }
+      if (heroCta && slideTargets[heroIdx]) {
+        heroCta.href = slideTargets[heroIdx].href;
+        heroCta.textContent = slideTargets[heroIdx].label;
+      }
+    }
+
+    heroTabs.forEach(function (t, i) {
+      t.addEventListener('click', function () {
+        setHeroSlide(i);
+      });
+    });
+
+    if (heroPrev) {
+      heroPrev.addEventListener('click', function () {
+        setHeroSlide(heroIdx - 1);
+      });
+    }
+    if (heroNext) {
+      heroNext.addEventListener('click', function () {
+        setHeroSlide(heroIdx + 1);
+      });
+    }
+    if (heroToggle) {
+      heroToggle.addEventListener('click', function () {
+        heroAuto = !heroAuto;
+        heroToggle.textContent = heroAuto ? 'Auto: ON' : 'Auto: OFF';
+        heroToggle.setAttribute('aria-pressed', String(!heroAuto));
+        if (heroCaption) {
+          heroCaption.textContent = 'Slide ' + (heroIdx + 1) + ' of ' + heroSlides.length + (heroAuto ? ' • Hover to pause' : ' • Paused');
+        }
+      });
+    }
+
+    heroCarousel.addEventListener('mouseenter', function () { heroHover = true; });
+    heroCarousel.addEventListener('mouseleave', function () { heroHover = false; });
+
+    function tickHero(now) {
+      var dt = now - heroLastTick;
+      heroLastTick = now;
+      if (heroAuto && !heroHover && !document.hidden) {
+        heroElapsed += dt;
+        var pct = Math.min(100, (heroElapsed / heroDuration) * 100);
+        if (heroBars[heroIdx]) {
+          heroBars[heroIdx].style.width = pct.toFixed(1) + '%';
+        }
+        if (heroElapsed >= heroDuration) {
+          setHeroSlide(heroIdx + 1);
+        }
+      }
+      requestAnimationFrame(tickHero);
+    }
+    requestAnimationFrame(tickHero);
+  }
+
+  /* ---------- 3. Auto-Playing Project Media Sliders ---------- */
+  qsa('[data-auto-slider]').forEach(function (slider) {
+    var items = qsa('.media-slide-item', slider);
+    var dots = qsa('[data-slider-dot]', slider);
+    var titleEl = qs('[data-slider-title]', slider);
+    var prevBtn = qs('[data-slider-prev]', slider);
+    var nextBtn = qs('[data-slider-next]', slider);
+    if (!items.length) return;
+
+    var cur = 0;
+    var paused = false;
+
+    function showSlide(n) {
+      cur = (n + items.length) % items.length;
+      items.forEach(function (item, i) {
+        item.hidden = i !== cur;
+      });
+      dots.forEach(function (dot, i) {
+        dot.setAttribute('aria-selected', String(i === cur));
+      });
+      if (titleEl && items[cur]) {
+        var lbl = items[cur].getAttribute('data-slide-label');
+        if (lbl) titleEl.textContent = lbl;
+      }
+    }
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { showSlide(i); });
+    });
+    if (prevBtn) prevBtn.addEventListener('click', function () { showSlide(cur - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { showSlide(cur + 1); });
+
+    slider.addEventListener('mouseenter', function () { paused = true; });
+    slider.addEventListener('mouseleave', function () { paused = false; });
+
+    setInterval(function () {
+      if (!paused && !document.hidden) {
+        showSlide(cur + 1);
+      }
+    }, 4200);
+  });
+
+  /* ---------- 4. Full-Screen Image Lightbox ---------- */
+  var lightboxModal = qs('#lightbox-modal');
+  var lightboxImg = qs('#lightbox-img');
+  var lightboxCaption = qs('#lightbox-caption');
+  var lightboxClose = qs('#lightbox-close');
+
+  function openLightbox(src, caption, alt) {
+    if (!lightboxModal || !lightboxImg) return;
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || caption || 'Architecture diagram';
+    if (lightboxCaption) lightboxCaption.textContent = caption || alt || 'Preview';
+    lightboxModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    if (!lightboxModal) return;
+    lightboxModal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  qsa('[data-lightbox-src]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      openLightbox(
+        el.getAttribute('data-lightbox-src'),
+        el.getAttribute('data-lightbox-caption'),
+        el.getAttribute('alt')
+      );
+    });
+  });
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxModal) {
+    lightboxModal.addEventListener('click', function (e) {
+      if (e.target === lightboxModal) closeLightbox();
+    });
+  }
+
+  /* ---------- 5. Quick Command Palette (Ctrl+K / Cmd+K) ---------- */
+  var cmdModal = qs('#cmd-modal');
+  var cmdTrigger = qs('#cmd-trigger');
+  var cmdClose = qs('#cmd-close');
+
+  function openCmd() {
+    if (!cmdModal) return;
+    cmdModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCmd() {
+    if (!cmdModal) return;
+    cmdModal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  if (cmdTrigger) cmdTrigger.addEventListener('click', openCmd);
+  if (cmdClose) cmdClose.addEventListener('click', closeCmd);
+  if (cmdModal) {
+    cmdModal.addEventListener('click', function (e) {
+      if (e.target === cmdModal) closeCmd();
+    });
+  }
+
+  qsa('[data-cmd-action]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var act = btn.getAttribute('data-cmd-action');
+      closeCmd();
+      if (act === 'grocery-bi') {
+        var t1 = qs('#g-tab-dash');
+        if (t1) t1.click();
+        var p1 = qs('#project-grocery');
+        if (p1) p1.scrollIntoView({ behavior: 'smooth' });
+      } else if (act === 'grocery-sql') {
+        var t2 = qs('#g-tab-sql');
+        if (t2) t2.click();
+        var p2 = qs('#project-grocery');
+        if (p2) p2.scrollIntoView({ behavior: 'smooth' });
+      } else if (act === 'flood-sim') {
+        var t3 = qs('#f-tab-sim');
+        if (t3) t3.click();
+        var p3 = qs('#project-flood');
+        if (p3) p3.scrollIntoView({ behavior: 'smooth' });
+      } else if (act === 'flood-scatter') {
+        var t4 = qs('#f-tab-fit');
+        if (t4) t4.click();
+        var p4 = qs('#project-flood');
+        if (p4) p4.scrollIntoView({ behavior: 'smooth' });
+      } else if (act === 'crypito-live') {
+        var t5 = qs('#c-tab-live');
+        if (t5) t5.click();
+        var p5 = qs('#project-crypito');
+        if (p5) p5.scrollIntoView({ behavior: 'smooth' });
+      } else if (act === 'copy-email') {
+        var cBtn = qs('#copy-email');
+        if (cBtn) cBtn.click();
+      }
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (cmdModal && cmdModal.hidden) openCmd();
+      else closeCmd();
+    } else if (e.key === 'Escape') {
+      if (lightboxModal && !lightboxModal.hidden) closeLightbox();
+      if (cmdModal && !cmdModal.hidden) closeCmd();
+    }
+  });
+
+  /* ---------- 6. Mobile Menu ---------- */
   var menuBtn = qs('#menu-btn');
   var mobileMenu = qs('#mobile-menu');
   if (menuBtn && mobileMenu) {
@@ -48,11 +295,11 @@
       a.addEventListener('click', function () { setMenu(false); });
     });
     window.addEventListener('resize', function () {
-      if (window.innerWidth >= 768 && !mobileMenu.hidden) setMenu(false);
+      if (window.innerWidth >= 820 && !mobileMenu.hidden) setMenu(false);
     });
   }
 
-  /* ---------- cryPito Browser Frame Controller ---------- */
+  /* ---------- 7. cryPito Browser Frame Controller ---------- */
   var cryFrame = qs('#crypito-iframe');
   var cryUrl = qs('#crypito-url');
   var cryOpenLink = qs('#crypito-open-new');
@@ -92,7 +339,7 @@
     });
   });
 
-  /* ---------- Copy Email ---------- */
+  /* ---------- 8. Copy Email ---------- */
   var copyBtn = qs('#copy-email');
   var copyLabel = copyBtn ? qs('[data-copy-label]', copyBtn) : null;
   var copyStatus = qs('#copy-status');
