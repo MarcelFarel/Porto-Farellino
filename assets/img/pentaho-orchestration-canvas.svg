@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 740" width="1280" height="740" font-family="'Segoe UI', Inter, system-ui, sans-serif">
+  <!-- Window chrome: Pentaho Data Integration (Spoon) -->
+  <rect width="1280" height="740" fill="#1E2229"/>
+  <rect width="1280" height="34" fill="#14171C"/>
+  <circle cx="18" cy="17" r="5.5" fill="#E5534B"/>
+  <circle cx="36" cy="17" r="5.5" fill="#D29922"/>
+  <circle cx="54" cy="17" r="5.5" fill="#3FB950"/>
+  <text x="76" y="22" fill="#C9D1D9" font-size="12" font-weight="600">Pentaho Data Integration (Spoon) - [Orchestration.kjb / SalesFact.ktr]</text>
+  <text x="1135" y="22" fill="#8B949E" font-family="monospace" font-size="11">MySQL: localhost:3306/olap</text>
+
+  <!-- Spoon tabs bar -->
+  <rect y="34" width="1280" height="32" fill="#191D24"/>
+  <rect x="12" y="38" width="168" height="28" fill="#232933" stroke="#F5A524" stroke-width="1"/>
+  <text x="26" y="56" fill="#F0F4F8" font-family="monospace" font-size="12" font-weight="600">Orchestration.kjb</text>
+  <rect x="184" y="38" width="150" height="28" fill="#161A20" stroke="#2D3542" stroke-width="1"/>
+  <text x="198" y="56" fill="#9BA5B4" font-family="monospace" font-size="12">SalesFact.ktr</text>
+  <rect x="338" y="38" width="175" height="28" fill="#161A20" stroke="#2D3542" stroke-width="1"/>
+  <text x="352" y="56" fill="#9BA5B4" font-family="monospace" font-size="12">TimeDimension.ktr</text>
+  <rect x="517" y="38" width="196" height="28" fill="#161A20" stroke="#2D3542" stroke-width="1"/>
+  <text x="531" y="56" fill="#9BA5B4" font-family="monospace" font-size="12">CustomerDimension.ktr</text>
+
+  <!-- Upper Canvas: Orchestration.kjb (exact xloc/yloc layout) -->
+  <rect x="16" y="76" width="1248" height="240" fill="#12161D" stroke="#2B3340"/>
+  <g stroke="#1C222D" stroke-width="1">
+    <line x1="16" y1="126" x2="1264" y2="126"/>
+    <line x1="16" y1="176" x2="1264" y2="176"/>
+    <line x1="16" y1="226" x2="1264" y2="226"/>
+    <line x1="16" y1="276" x2="1264" y2="276"/>
+    <line x1="200" y1="76" x2="200" y2="316"/>
+    <line x1="400" y1="76" x2="400" y2="316"/>
+    <line x1="600" y1="76" x2="600" y2="316"/>
+    <line x1="800" y1="76" x2="800" y2="316"/>
+    <line x1="1000" y1="76" x2="1000" y2="316"/>
+    <line x1="1200" y1="76" x2="1200" y2="316"/>
+  </g>
+  <text x="32" y="102" fill="#F5A524" font-family="monospace" font-size="12" font-weight="600">JOB CANVAS: Orchestration.kjb (Sequential Dimension-First Load)</text>
+  <text x="980" y="102" fill="#34D399" font-family="monospace" font-size="11">Status: Finished (errors=0, elapsed=1.42s)</text>
+
+  <!-- Job Hops -->
+  <defs>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34D399"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#F5A524"/>
+    </marker>
+  </defs>
+
+  <g stroke="#34D399" stroke-width="2" marker-end="url(#arrowGreen)">
+    <line x1="126" y1="186" x2="218" y2="186"/>
+    <line x1="274" y1="186" x2="398" y2="186"/>
+    <line x1="454" y1="186" x2="578" y2="186"/>
+    <line x1="634" y1="186" x2="758" y2="186"/>
+    <line x1="814" y1="186" x2="938" y2="186"/>
+    <line x1="994" y1="186" x2="1118" y2="186"/>
+  </g>
+
+  <!-- Nodes in Orchestration.kjb -->
+  <!-- Start -->
+  <g transform="translate(72,158)">
+    <rect width="54" height="54" rx="6" fill="#1B2432" stroke="#34D399" stroke-width="1.8"/>
+    <polygon points="21,16 21,38 38,27" fill="#34D399"/>
+    <text x="27" y="72" fill="#E9EDF2" font-size="12" font-weight="600" text-anchor="middle">Start</text>
+    <text x="27" y="87" fill="#7D8899" font-family="monospace" font-size="10" text-anchor="middle">x:200 y:100</text>
+  </g>
+
+  <!-- LocationDimension.ktr -->
+  <g transform="translate(220,158)">
+    <rect width="54" height="54" rx="6" fill="#1B2432" stroke="#F5A524" stroke-width="1.8"/>
+    <path d="M16 20h22M16 27h22M16 34h14" stroke="#F5A524" stroke-width="2" stroke-linecap="round"/>
+    <text x="27" y="72" fill="#E9EDF2" font-size="12" font-weight="600" text-anchor="middle">Transformation</text>
+    <text x="27" y="87" fill="#F5A524" font-family="monospace" font-size="10.5" text-anchor="middle">LocationDimension.ktr</text>
+    <text x="27" y="102" fill="#7D8899" font-family="monospace" font-size="10" text-anchor="middle">3 branch/city rows</text>
+  </g>
+
+  <!-- ProductDimension.ktr -->
+  <g transform="translate(400,158)">
+    <rect width="54" height="54" rx="6" fill="#1B2432" stroke="#F5A524" stroke-width="1.8"/>
+    <path d="M16 20h22M16 27h22M16 34h14" stroke="#F5A524" stroke-width="2" stroke-linecap="round"/>
+    <text x="27" y="72" fill="#E9EDF2" font-size="12" font-weight="600" text-anchor="middle">Transformation 2</text>
+    <text x="27" y="87" fill="#F5A524" font-family="monospace" font-size="10.5" text-anchor="middle">ProductDimension.ktr</text>
+    <text x="27" y="102" fill="#7D8899" font-family="monospace" font-size="10" text-anchor="middle">6 product lines</text>
+  </g>
+
+  <!-- CustomerDimension.ktr -->
+  <g transform="translate(580,158)">
+    <rect width="54" height="54" rx="6" fill="#1B2432" stroke="#F5A524" stroke-width="1.8"/>
+    <path d="M16 20h22M16 27h22M16 34h14" stroke="#F5A524" stroke-width="2" stroke-linecap="round"/>
+    <text x="27" y="72" fill="#E9EDF2" font-size="12" font-weight="600" text-anchor="middle">Transformation 3</text>
+    <text x="27" y="87" fill="#F5A524" font-family="monospace" font-size="10.5" text-anchor="middle">CustomerDimension.ktr</text>
+    <text x="27" y="102" fill="#7D8899" font-family="monospace" font-size="10" text-anchor="middle">4 segment pairs</text>
+  </g>
+
+  <!-- TimeDimension.ktr -->
+  <g transform="translate(760,158)">
+    <rect width="54" height="54" rx="6" fill="#1B2432" stroke="#F5A524" stroke-width="1.8"/>
+    <path d="M16 20h22M16 27h22M16 34h14" stroke="#F5A524" stroke-width="2" stroke-linecap="round"/>
+    <text x="27" y="72" fill="#E9EDF2" font-size="12" font-weight="600" text-anchor="middle">Transformation 4</text>
+    <text x="27" y="87" fill="#F5A524" font-family="monospace" font-size="10.5" text-anchor="middle">TimeDimension.ktr</text>
+    <text x="27" y="102" fill="#7D8899" font-family="monospace" font-size="10" text-anchor="middle">89 unique dates</text>
+  </g>
+
+  <!-- SalesFact.ktr -->
+  <g transform="translate(940,158)">
+    <rect width="54" height="54" rx="6" fill="#2A2115" stroke="#F5A524" stroke-width="2.2"/>
+    <path d="M16 20h22M16 27h22M16 34h14" stroke="#F5A524" stroke-width="2" stroke-linecap="round"/>
+    <text x="27" y="72" fill="#E9EDF2" font-size="12" font-weight="600" text-anchor="middle">Transformation 5</text>
+    <text x="27" y="87" fill="#F5A524" font-family="monospace" font-size="10.5" text-anchor="middle">SalesFact.ktr</text>
+    <text x="27" y="102" fill="#7D8899" font-family="monospace" font-size="10" text-anchor="middle">1,000 fact rows</text>
+  </g>
+
+  <!-- Success -->
+  <g transform="translate(1120,158)">
+    <rect width="54" height="54" rx="6" fill="#152922" stroke="#34D399" stroke-width="1.8"/>
+    <path d="M16 28l8 8 15-16" fill="none" stroke="#34D399" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="27" y="72" fill="#E9EDF2" font-size="12" font-weight="600" text-anchor="middle">Success</text>
+    <text x="27" y="87" fill="#34D399" font-family="monospace" font-size="10" text-anchor="middle">exit code 0</text>
+  </g>
+
+  <!-- Lower Canvas: SalesFact.ktr (7 steps) -->
+  <rect x="16" y="330" width="1248" height="225" fill="#12161D" stroke="#2B3340"/>
+  <text x="32" y="356" fill="#6F86A6" font-family="monospace" font-size="12" font-weight="600">TRANSFORMATION CANVAS: SalesFact.ktr (High-Water Mark + 4 Surrogate Key Lookups)</text>
+
+  <g stroke="#F5A524" stroke-width="2" marker-end="url(#arrowAmber)">
+    <line x1="116" y1="432" x2="210" y2="432"/>
+    <line x1="264" y1="432" x2="376" y2="432"/>
+    <line x1="430" y1="432" x2="544" y2="432"/>
+    <line x1="598" y1="432" x2="712" y2="432"/>
+    <line x1="766" y1="432" x2="880" y2="432"/>
+    <line x1="934" y1="432" x2="1068" y2="432"/>
+  </g>
+
+  <g transform="translate(62,405)">
+    <rect width="54" height="54" rx="6" fill="#1B212A" stroke="#6F86A6" stroke-width="1.6"/>
+    <text x="27" y="32" fill="#E9EDF2" font-family="monospace" font-size="11" text-anchor="middle">SQL</text>
+    <text x="27" y="72" fill="#E9EDF2" font-size="11.5" font-weight="600" text-anchor="middle">Table input 2</text>
+    <text x="27" y="87" fill="#9BA5B4" font-family="monospace" font-size="9.5" text-anchor="middle">MAX(Date) olap</text>
+  </g>
+
+  <g transform="translate(210,405)">
+    <rect width="54" height="54" rx="6" fill="#1B212A" stroke="#6F86A6" stroke-width="1.6"/>
+    <text x="27" y="32" fill="#E9EDF2" font-family="monospace" font-size="11" text-anchor="middle">SQL</text>
+    <text x="27" y="72" fill="#E9EDF2" font-size="11.5" font-weight="600" text-anchor="middle">Table input</text>
+    <text x="27" y="87" fill="#9BA5B4" font-family="monospace" font-size="9.5" text-anchor="middle">oltp WHERE Date &gt; ?</text>
+  </g>
+
+  <g transform="translate(376,405)">
+    <rect width="54" height="54" rx="6" fill="#1B212A" stroke="#F5A524" stroke-width="1.6"/>
+    <text x="27" y="32" fill="#F5A524" font-family="monospace" font-size="11" text-anchor="middle">LKP1</text>
+    <text x="27" y="72" fill="#E9EDF2" font-size="11.5" font-weight="600" text-anchor="middle">Database lookup</text>
+    <text x="27" y="87" fill="#F5A524" font-family="monospace" font-size="9.5" text-anchor="middle">location_id</text>
+  </g>
+
+  <g transform="translate(544,405)">
+    <rect width="54" height="54" rx="6" fill="#1B212A" stroke="#F5A524" stroke-width="1.6"/>
+    <text x="27" y="32" fill="#F5A524" font-family="monospace" font-size="11" text-anchor="middle">LKP2</text>
+    <text x="27" y="72" fill="#E9EDF2" font-size="11.5" font-weight="600" text-anchor="middle">Database lookup 2</text>
+    <text x="27" y="87" fill="#F5A524" font-family="monospace" font-size="9.5" text-anchor="middle">product_id</text>
+  </g>
+
+  <g transform="translate(712,405)">
+    <rect width="54" height="54" rx="6" fill="#1B212A" stroke="#F5A524" stroke-width="1.6"/>
+    <text x="27" y="32" fill="#F5A524" font-family="monospace" font-size="11" text-anchor="middle">LKP3</text>
+    <text x="27" y="72" fill="#E9EDF2" font-size="11.5" font-weight="600" text-anchor="middle">Database lookup 3</text>
+    <text x="27" y="87" fill="#F5A524" font-family="monospace" font-size="9.5" text-anchor="middle">customer_id</text>
+  </g>
+
+  <g transform="translate(880,405)">
+    <rect width="54" height="54" rx="6" fill="#1B212A" stroke="#F5A524" stroke-width="1.6"/>
+    <text x="27" y="32" fill="#F5A524" font-family="monospace" font-size="11" text-anchor="middle">LKP4</text>
+    <text x="27" y="72" fill="#E9EDF2" font-size="11.5" font-weight="600" text-anchor="middle">Database lookup 4</text>
+    <text x="27" y="87" fill="#F5A524" font-family="monospace" font-size="9.5" text-anchor="middle">time_id</text>
+  </g>
+
+  <g transform="translate(1068,405)">
+    <rect width="54" height="54" rx="6" fill="#152922" stroke="#34D399" stroke-width="1.8"/>
+    <text x="27" y="32" fill="#34D399" font-family="monospace" font-size="11" text-anchor="middle">OUT</text>
+    <text x="27" y="72" fill="#E9EDF2" font-size="11.5" font-weight="600" text-anchor="middle">Table output</text>
+    <text x="27" y="87" fill="#34D399" font-family="monospace" font-size="9.5" text-anchor="middle">olap.SalesFact</text>
+  </g>
+
+  <!-- Step Metrics Footer Table -->
+  <rect x="16" y="568" width="1248" height="156" fill="#141920" stroke="#2B3340"/>
+  <rect x="16" y="568" width="1248" height="28" fill="#1B212A"/>
+  <text x="32" y="586" fill="#E9EDF2" font-family="monospace" font-size="11.5" font-weight="600">Execution Metrics (Step Metrics / Job Metrics)</text>
+  <g font-family="monospace" font-size="11" fill="#9BA5B4">
+    <text x="32" y="614">1  LocationDimension.ktr    Read: 1,000   Lookup/Update: 3 distinct (Yangon, Naypyitaw, Mandalay)   Status: Finished</text>
+    <text x="32" y="636">2  ProductDimension.ktr     Read: 1,000   Lookup/Update: 6 product lines                            Status: Finished</text>
+    <text x="32" y="658">3  CustomerDimension.ktr    Read: 1,000   Lookup/Update: 4 customer_type x gender segments          Status: Finished</text>
+    <text x="32" y="680">4  TimeDimension.ktr        Read: 1,000   HashSet Unique: 89 dates (2019-01-01 .. 2019-03-30)       Status: Finished</text>
+    <text x="32" y="702" fill="#F5A524">5  SalesFact.ktr            Read: 1,000   4x DBLookup resolved -&gt; Table output: olap.SalesFact      Status: Finished</text>
+  </g>
+</svg>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cryPIto - Unlock Your Crypto Future</title>
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="home.html" class="logo">cryPIto</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="home.html" class="nav-link">Home</a></li>
+                <li><a href="Cryptocurrency.html" class="nav-link">Cryptocurrencies</a></li>
+                <li><a href="Benefits.html" class="nav-link">Benefits</a></li>
+                <li><a href="Learn_more.html" class="nav-link">Learn More</a></li>
+            </ul>
+            <a href="Register.html" class="cta-button">Sign Up</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Unlock the World of Crypto with CryPIto</h1>
+            <p class="hero-subtitle">Experience the luxury of seamless cryptocurrency trading with premium tools designed for the modern investor</p>
+            <a href="Register.html" class="hero-cta">Start Your Journey</a>
+        </div>
+    </section>
+
+    <section class="top-coins">
+        <h2 class="section-title">Top Performing Assets</h2>
+        <div class="coins-grid">
+            <div class="coin-card">
+                <div class="coin-icon">
+                    <img src="../Image/bitcoin.png" alt="Bitcoin" onerror="this.parentElement.classList.add('btc', 'no-image'); this.parentElement.innerHTML='₿';">
+                </div>
+                <h3 class="coin-name">Bitcoin</h3>
+                <p class="coin-price">$43,250.00</p>
+                <p class="coin-change positive">+2.45%</p>
+            </div>
+            <div class="coin-card">
+                <div class="coin-icon">
+                    <img src="../Image/ethereum.png" alt="Ethereum" onerror="this.parentElement.classList.add('eth', 'no-image'); this.parentElement.innerHTML='Ξ';">
+                </div>
+                <h3 class="coin-name">Ethereum</h3>
+                <p class="coin-price">$2,680.50</p>
+                <p class="coin-change positive">+1.78%</p>
+            </div>
+            <div class="coin-card">
+                <div class="coin-icon">
+                    <img src="../Image/cardano.png" alt="Cardano" onerror="this.parentElement.classList.add('ada', 'no-image'); this.parentElement.innerHTML='₳';">
+                </div>
+                <h3 class="coin-name">Cardano</h3>
+                <p class="coin-price">$0.485</p>
+                <p class="coin-change negative">-0.92%</p>
+            </div>
+            <div class="coin-card">
+                <div class="coin-icon">
+                    <img src="../Image/solana.png" alt="Solana" onerror="this.parentElement.classList.add('sol', 'no-image'); this.parentElement.innerHTML='◎';">
+                </div>
+                <h3 class="coin-name">Solana</h3>
+                <p class="coin-price">$98.75</p>
+                <p class="coin-change positive">+3.21%</p>
+            </div>
+        </div>
+        <a href="Cryptocurrency.html" class="view-all-btn">View All Coins</a>
+    </section>
+
+    <section class="new-to-crypto">
+        <div class="crypto-intro">
+            <h2 class="section-title">New to Cryptocurrency?</h2>
+            <p class="intro-text">
+                Cryptocurrency represents the future of digital finance, built on revolutionary blockchain technology. Our platform provides you with the knowledge, tools, and confidence needed to navigate this exciting world of decentralized assets and smart investments.
+            </p>
+            <a href="Learn_more.html" class="learn-more-btn">Learn More</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Support</a>
+                <a href="#" class="footer-link">About Us</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+            <p class="footer-text">© 2025 cryPIto. All rights reserved. Empowering your crypto journey.</p>
+        </div>
+    </footer>
+
+<script>
+(function(){
+  try {
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'crypito-page', page: 'home.html' }, '*');
+    }
+  } catch (e) {}
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    var q = item.querySelector('.faq-question');
+    var a = item.querySelector('.faq-answer');
+    var t = item.querySelector('.faq-toggle');
+    if (q && a) {
+      q.addEventListener('click', function() {
+        var hidden = a.style.display === 'none';
+        a.style.display = hidden ? 'block' : 'none';
+        if (t) t.textContent = hidden ? '−' : '+';
+      });
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cryPIto - Learn More</title>
+    <link rel="stylesheet" href="../css/Register.css">
+</head>
+<body>
+     <header class="header">
+        <nav class="nav-container">
+            <a href="home.html" class="logo">cryPIto</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="home.html" class="nav-link">Home</a></li>
+                <li><a href="Cryptocurrency.html" class="nav-link">Cryptocurrencies</a></li>
+                <li><a href="Benefits.html" class="nav-link">Benefits</a></li>
+                <li><a href="Learn_more.html" class="nav-link">Learn More</a></li>
+            </ul>
+            <a href="Register.html" class="cta-button">Sign Up</a>
+            </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="register-container">
+            <div class="register-card">
+                <div class="register-header">
+                    <h1 class="register-title">Sign Up</h1>
+                    <p class="register-subtitle">Start your crypto journey with cryPIto</p>
+                </div>
+
+                <div class="success-message" id="successMessage">
+                    Account created successfully! Welcome to cryPIto!
+                </div>
+
+                <form id="registerForm" novalidate>
+                    <div class="form-group">
+                        <label for="username" class="form-label">Username</label>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            name="username" 
+                            class="form-input" 
+                            placeholder="Enter your username"
+                            required
+                        >
+                        <div class="error-message" id="usernameError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="Enter your email address"
+                            required
+                        >
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            class="form-input" 
+                            placeholder="Enter your phone number"
+                            required
+                        >
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country" class="form-label">Country</label>
+                        <select id="country" name="country" class="form-select" required>
+                            <option value="">Select your country</option>
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="United States">United States</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Singapore">Singapore</option>
+                            <option value="Malaysia">Malaysia</option>
+                            <option value="Thailand">Thailand</option>
+                            <option value="Philippines">Philippines</option>
+                            <option value="Vietnam">Vietnam</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="error-message" id="countryError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-input" 
+                            placeholder="Create a strong password"
+                            required
+                        >
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" class="checkbox-input" required>
+                        <label for="terms" class="checkbox-label">
+                            I agree to the <a href="#" target="_blank">Terms and Conditions</a> and <a href="#" target="_blank">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <div class="error-message" id="termsError"></div>
+
+                    <button type="submit" class="submit-button">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Support</a>
+                <a href="#" class="footer-link">About Us</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+            <p class="footer-text">© 2025 cryPIto. All rights reserved. Empowering your crypto journey.</p>
+        </div>
+    </footer>
+
+    <script src="../js/Register.js"></script>
+
+<script>
+(function(){
+  try {
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'crypito-page', page: 'Register.html' }, '*');
+    }
+  } catch (e) {}
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    var q = item.querySelector('.faq-question');
+    var a = item.querySelector('.faq-answer');
+    var t = item.querySelector('.faq-toggle');
+    if (q && a) {
+      q.addEventListener('click', function() {
+        var hidden = a.style.display === 'none';
+        a.style.display = hidden ? 'block' : 'none';
+        if (t) t.textContent = hidden ? '−' : '+';
+      });
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

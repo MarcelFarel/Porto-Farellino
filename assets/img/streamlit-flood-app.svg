@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 740" width="1280" height="740" font-family="'Source Sans Pro', Inter, system-ui, sans-serif">
+  <!-- Exact Streamlit UI representation of Main.py -->
+  <rect width="1280" height="740" fill="#0E1117"/>
+  <!-- Top bar -->
+  <rect width="1280" height="36" fill="#0E1117"/>
+  <rect x="0" y="0" width="1280" height="3" fill="#FF4B4B"/>
+  <text x="1150" y="23" fill="#9BA5B4" font-size="12">Running  •  localhost:8501</text>
+
+  <!-- Sidebar (st.sidebar) -->
+  <rect x="0" y="3" width="290" height="737" fill="#262730"/>
+  <text x="28" y="62" fill="#FAFAFA" font-size="20" font-weight="700">Lokasi Saya</text>
+
+  <text x="28" y="102" fill="#FAFAFA" font-size="13">Kota:</text>
+  <rect x="28" y="110" width="234" height="38" rx="6" fill="#0E1117" stroke="#41444C"/>
+  <text x="42" y="134" fill="#FAFAFA" font-size="14">Jakarta Barat</text>
+  <path d="M242 126l5 6 5-6" fill="none" stroke="#FAFAFA" stroke-width="1.6"/>
+
+  <text x="28" y="176" fill="#FAFAFA" font-size="13">Kecamatan:</text>
+  <rect x="28" y="184" width="234" height="38" rx="6" fill="#0E1117" stroke="#41444C"/>
+  <text x="42" y="208" fill="#FAFAFA" font-size="14">Cengkareng</text>
+  <path d="M242 200l5 6 5-6" fill="none" stroke="#FAFAFA" stroke-width="1.6"/>
+
+  <text x="28" y="250" fill="#FAFAFA" font-size="13">Kelurahan:</text>
+  <rect x="28" y="258" width="234" height="38" rx="6" fill="#0E1117" stroke="#41444C"/>
+  <text x="42" y="282" fill="#FAFAFA" font-size="14">Cengkareng Barat</text>
+  <path d="M242 274l5 6 5-6" fill="none" stroke="#FAFAFA" stroke-width="1.6"/>
+
+  <text x="28" y="324" fill="#FAFAFA" font-size="13">RW:</text>
+  <rect x="28" y="332" width="234" height="38" rx="6" fill="#0E1117" stroke="#41444C"/>
+  <text x="42" y="356" fill="#FAFAFA" font-size="14">01</text>
+  <path d="M242 348l5 6 5-6" fill="none" stroke="#FAFAFA" stroke-width="1.6"/>
+
+  <rect x="28" y="404" width="234" height="92" rx="6" fill="#191B22" stroke="#343741"/>
+  <text x="42" y="428" fill="#9BA5B4" font-family="monospace" font-size="11">Main.py • LinearRegression</text>
+  <text x="42" y="450" fill="#FAFAFA" font-family="monospace" font-size="11.5">Records: 4,698</text>
+  <text x="42" y="470" fill="#FAFAFA" font-family="monospace" font-size="11.5">R² = 0.5110 | Mean = 41.6 cm</text>
+
+  <!-- Main Content Area -->
+  <text x="334" y="76" fill="#FAFAFA" font-size="34" font-weight="700">JakartaFloodPredict</text>
+  <text x="334" y="104" fill="#FAFAFA" font-size="14.5" font-weight="600">Sistem Deteksi Dini &amp; Peta Risiko Banjir <tspan fill="#9BA5B4" font-style="italic" font-weight="400">Powered by JakartaFloodPredict Model (Multiple Linear Regression)</tspan></text>
+
+  <!-- Left Column: Simulasi Cuaca (col1) -->
+  <text x="334" y="156" fill="#FAFAFA" font-size="22" font-weight="700">Simulasi Cuaca</text>
+  <text x="334" y="178" fill="#9BA5B4" font-size="12.5">Input parameter ini akan mengubah prediksi di Peta &amp; Lokasi terpilih.</text>
+
+  <text x="334" y="212" fill="#FAFAFA" font-size="13">Curah Hujan (mm)</text>
+  <rect x="334" y="220" width="336" height="38" rx="6" fill="#262730" stroke="#41444C"/>
+  <text x="348" y="244" fill="#FAFAFA" font-family="monospace" font-size="14">100.00</text>
+  <text x="618" y="244" fill="#9BA5B4" font-size="16">−   +</text>
+
+  <text x="334" y="286" fill="#FAFAFA" font-size="13">Durasi Hujan (menit)</text>
+  <rect x="334" y="294" width="336" height="38" rx="6" fill="#262730" stroke="#41444C"/>
+  <text x="348" y="318" fill="#FAFAFA" font-family="monospace" font-size="14">120</text>
+  <text x="618" y="318" fill="#9BA5B4" font-size="16">−   +</text>
+
+  <line x1="334" y1="356" x2="670" y2="356" stroke="#31333F"/>
+
+  <text x="334" y="394" fill="#FAFAFA" font-size="22" font-weight="700">Prediksi di Cengkareng Barat</text>
+  <text x="334" y="426" fill="#9BA5B4" font-size="13">Tinggi Air (RW Ini)</text>
+  <text x="334" y="468" fill="#FAFAFA" font-size="36" font-weight="700">42.8 cm</text>
+  <text x="334" y="492" fill="#3DD56D" font-size="13" font-weight="600">↑ 0.97x Faktor Wilayah</text>
+
+  <!-- Status Banner from Main.py line 131 -->
+  <rect x="334" y="514" width="336" height="54" rx="10" fill="#EA580C"/>
+  <text x="502" y="548" fill="#FFFFFF" font-size="20" font-weight="700" text-anchor="middle">STATUS: WASPADA</text>
+
+  <!-- Right Column: Peta Risiko (col2) -->
+  <text x="710" y="156" fill="#FAFAFA" font-size="22" font-weight="700">Peta Risiko</text>
+  <rect x="710" y="176" width="536" height="440" rx="6" fill="#EAECEF" stroke="#31333F"/>
+  <text x="728" y="204" fill="#1F2937" font-size="14" font-weight="600">Dampak Hujan 100.0mm di Jakarta Barat</text>
+
+  <!-- Map Canvas (Carto-Positron light basemap with Jakarta polygons) -->
+  <g transform="translate(740,218)">
+    <!-- Coastline / grid lines -->
+    <rect x="0" y="0" width="410" height="376" fill="#DDE3EA"/>
+    <path d="M0 70 Q 150 55 410 75 L 410 376 L 0 376 Z" fill="#F4F6F8"/>
+    <!-- Neighboring cities -->
+    <polygon points="40,56 76,44 172,32 230,22 290,32 365,56 375,112 315,124 265,112 195,100 135,88 86,76" fill="#CBD5E1" stroke="#FFFFFF" stroke-width="2"/>
+    <polygon points="184,112 232,100 265,112 278,148 254,172 218,184 184,160" fill="#CBD5E1" stroke="#FFFFFF" stroke-width="2"/>
+    <polygon points="232,100 315,124 375,112 364,220 350,305 290,360 254,336 242,208 218,184" fill="#CBD5E1" stroke="#FFFFFF" stroke-width="2"/>
+    <polygon points="98,172 146,184 218,184 242,208 254,336 194,350 146,324 98,255" fill="#CBD5E1" stroke="#FFFFFF" stroke-width="2"/>
+    <!-- Highlighted Jakarta Barat Choropleth (Reds scale at 44.6 / 150) -->
+    <polygon points="26,68 86,76 135,88 184,112 184,160 146,184 98,172 50,136" fill="#EF4444" fill-opacity="0.72" stroke="#7F1D1D" stroke-width="2.5"/>
+    <text x="108" y="132" fill="#111827" font-size="13" font-weight="700" text-anchor="middle">Jakarta Barat</text>
+    <text x="108" y="150" fill="#7F1D1D" font-family="monospace" font-size="11.5" font-weight="700" text-anchor="middle">44.6 cm</text>
+  </g>
+
+  <!-- Plotly colorbar (0..150 cm) -->
+  <defs>
+    <linearGradient id="redsGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#FEE2E2"/>
+      <stop offset="40%" stop-color="#F87171"/>
+      <stop offset="75%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#7F1D1D"/>
+    </linearGradient>
+  </defs>
+  <text x="1182" y="232" fill="#374151" font-size="10.5" font-weight="600">Prediksi (cm)</text>
+  <rect x="1182" y="242" width="14" height="290" fill="url(#redsGrad)" stroke="#CBD5E1"/>
+  <g font-size="10.5" fill="#374151" font-family="monospace">
+    <text x="1202" y="250">150</text>
+    <text x="1202" y="346">100</text>
+    <text x="1202" y="442">50</text>
+    <text x="1202" y="532">0</text>
+  </g>
+
+  <!-- st.info box -->
+  <rect x="710" y="630" width="536" height="48" rx="6" fill="#1C2D42" stroke="#2A4666"/>
+  <text x="728" y="659" fill="#BFDBFE" font-size="12.5">Peta ini menampilkan prediksi risiko spesifik untuk <tspan font-weight="700">Jakarta Barat</tspan> berdasarkan simulasi cuaca saat ini.</text>
+</svg>

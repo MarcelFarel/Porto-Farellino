@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="'Segoe UI', Inter, system-ui, sans-serif">
+  <!-- Exact 1280x720 Power BI Report Layout from VisualizationNew.pbix (Report/Layout) -->
+  <rect width="1280" height="720" fill="#F3F4F7"/>
+  <!-- Top Header Banner -->
+  <rect x="0" y="0" width="1280" height="52" fill="#12233E"/>
+  <text x="101" y="33" fill="#FFFFFF" font-size="20" font-weight="700">Supermarket Sales OLAP Analytical Dashboard</text>
+  <text x="1186" y="32" fill="#A6B7D0" font-size="12" text-anchor="end">VisualizationNew.pbix  |  MySQL Star Schema (olap)</text>
+
+  <!-- KPI Card 1: x=101 y=60 w=214 h=126 -->
+  <rect x="101" y="64" width="208" height="122" rx="4" fill="#FFFFFF" stroke="#DCE1EB"/>
+  <rect x="101" y="64" width="208" height="4" fill="#1B6EC2"/>
+  <text x="205" y="122" fill="#12233E" font-size="28" font-weight="700" text-anchor="middle">$322.97K</text>
+  <text x="205" y="148" fill="#5A6577" font-size="12" font-weight="600" text-anchor="middle">Total Revenue</text>
+  <text x="205" y="168" fill="#7D8797" font-size="10.5" text-anchor="middle">salesfact.Total Revenue</text>
+
+  <!-- KPI Card 2: x=316 y=60 w=224 h=126 -->
+  <rect x="319" y="64" width="212" height="122" rx="4" fill="#FFFFFF" stroke="#DCE1EB"/>
+  <rect x="319" y="64" width="212" height="4" fill="#008A80"/>
+  <text x="425" y="122" fill="#12233E" font-size="28" font-weight="700" text-anchor="middle">6.97 / 10</text>
+  <text x="425" y="148" fill="#5A6577" font-size="12" font-weight="600" text-anchor="middle">Average Customer Rating</text>
+  <text x="425" y="168" fill="#7D8797" font-size="10.5" text-anchor="middle">Avg(salesfact.rating)</text>
+
+  <!-- KPI Card 3: x=540 y=60 w=209 h=126 -->
+  <rect x="541" y="64" width="200" height="122" rx="4" fill="#FFFFFF" stroke="#DCE1EB"/>
+  <rect x="541" y="64" width="200" height="4" fill="#1B6EC2"/>
+  <text x="641" y="122" fill="#12233E" font-size="28" font-weight="700" text-anchor="middle">1,000</text>
+  <text x="641" y="148" fill="#5A6577" font-size="12" font-weight="600" text-anchor="middle">Total Transactions</text>
+  <text x="641" y="168" fill="#7D8797" font-size="10.5" text-anchor="middle">salesfact.Total Transaction</text>
+
+  <!-- KPI Card 4: x=749 y=60 w=240 h=126 -->
+  <rect x="751" y="64" width="236" height="122" rx="4" fill="#FFFFFF" stroke="#DCE1EB"/>
+  <rect x="751" y="64" width="236" height="4" fill="#008A80"/>
+  <text x="869" y="122" fill="#12233E" font-size="28" font-weight="700" text-anchor="middle">$15,379.37</text>
+  <text x="869" y="148" fill="#5A6577" font-size="12" font-weight="600" text-anchor="middle">Total Gross Income</text>
+  <text x="869" y="168" fill="#7D8797" font-size="10.5" text-anchor="middle">salesfact.Total Gross Income</text>
+
+  <!-- Slicer: Select City x=1000 y=60 w=186 h=122 -->
+  <rect x="998" y="64" width="188" height="122" rx="4" fill="#FFFFFF" stroke="#DCE1EB"/>
+  <text x="1014" y="86" fill="#12233E" font-size="12.5" font-weight="700">Select City</text>
+  <g font-size="11.5" fill="#273142">
+    <rect x="1014" y="96" width="12" height="12" fill="#1B6EC2" rx="2"/>
+    <text x="1034" y="106">Mandalay</text>
+    <rect x="1014" y="120" width="12" height="12" fill="#1B6EC2" rx="2"/>
+    <text x="1034" y="130">Naypyitaw</text>
+    <rect x="1014" y="144" width="12" height="12" fill="#1B6EC2" rx="2"/>
+    <text x="1034" y="154">Yangon</text>
+  </g>
+
+  <!-- Visual 1: Revenue by City (clusteredColumnChart x=101 y=199 w=557 h=230) -->
+  <rect x="101" y="198" width="557" height="230" rx="4" fill="#FFFFFF" stroke="#DCE1EB"/>
+  <text x="121" y="224" fill="#12233E" font-size="14" font-weight="700">Revenue by City</text>
+  <line x1="140" y1="382" x2="620" y2="382" stroke="#DCE1EB"/>
+  <!-- Naypyitaw -->
+  <rect x="185" y="255" width="76" height="127" fill="#1B6EC2" rx="2"/>
+  <text x="223" y="248" fill="#12233E" font-size="11.5" font-weight="600" text-anchor="middle">$110.57K</text>
+  <text x="223" y="402" fill="#4A5568" font-size="12" text-anchor="middle">Naypyitaw</text>
+  <!-- Yangon -->
+  <rect x="342" y="261" width="76" height="121" fill="#2A84D2" rx="2"/>
+  <text x="380" y="254" fill="#12233E" font-size="11.5" font-weight="600" text-anchor="middle">$106.20K</text>
+  <text x="380" y="402" fill="#4A5568" font-size="12" text-anchor="middle">Yangon</text>
+  <!-- Mandalay -->
+  <rect x="499" y="261" width="76" height="121" fill="#008A80" rx="2"/>
+  <text x="537" y="254" fill="#12233E" font-size="11.5" font-weight="600" text-anchor="middle">$106.20K</text>
+  <text x="537" y="402" fill="#4A5568" font-size="12" text-anchor="middle">Mandalay</text>
+
+  <!-- Visual 2: Customer Type Distribution (donutChart x=679 y=199 w=507 h=230) -->
+  <rect x="679" y="198" width="507" height="230" rx="4" fill="#FFFFFF" stroke="#DCE1EB"/>
+  <text x="699" y="224" fill="#12233E" font-size="14" font-weight="700">Customer Type Distribution (by Quantity)</text>
+  <g transform="translate(835,320)">
+    <circle r="64" fill="none" stroke="#DCE1EB" stroke-width="26"/>
+    <!-- 57.73% arc -->
+    <circle r="64" fill="none" stroke="#1B6EC2" stroke-width="26" stroke-dasharray="232 402" transform="rotate(-90)"/>
+    <!-- 42.27% arc -->
+    <circle r="64" fill="none" stroke="#008A80" stroke-width="26" stroke-dasharray="170 402" stroke-dashoffset="-232" transform="rotate(-90)"/>
+    <text y="5" fill="#12233E" font-size="14" font-weight="700" text-anchor="middle">5,510 units</text>
+  </g>
+  <g font-size="12" fill="#273142">
+    <rect x="955" y="285" width="12" height="12" fill="#1B6EC2" rx="2"/>
+    <text x="975" y="296" font-weight="600">Member: 3,181 units (57.73%)</text>
+    <rect x="955" y="318" width="12" height="12" fill="#008A80" rx="2"/>
+    <text x="975" y="329" font-weight="600">Normal: 2,329 units (42.27%)</text>
+  </g>
+
+  <!-- Visual 3: Revenue by Product Line (clusteredBarChart x=101 y=439 w=557 h=265) -->
+  <rect x="101" y="440" width="557" height="262" rx="4" fill="#FFFFFF" stroke="#DCE1EB"/>
+  <text x="121" y="466" fill="#12233E" font-size="14" font-weight="700">Revenue by Product Line</text>
+  <g font-size="11.5" fill="#273142">
+    <text x="121" y="497">Food and beverages</text>
+    <rect x="265" y="485" width="310" height="16" fill="#1B6EC2" rx="2"/>
+    <text x="582" y="497" font-weight="600">$56.14K</text>
+
+    <text x="121" y="531">Sports and travel</text>
+    <rect x="265" y="519" width="304" height="16" fill="#2A84D2" rx="2"/>
+    <text x="576" y="531">$55.12K</text>
+
+    <text x="121" y="565">Electronic accessories</text>
+    <rect x="265" y="553" width="300" height="16" fill="#2A84D2" rx="2"/>
+    <text x="572" y="565">$54.34K</text>
+
+    <text x="121" y="599">Fashion accessories</text>
+    <rect x="265" y="587" width="300" height="16" fill="#2A84D2" rx="2"/>
+    <text x="572" y="599">$54.31K</text>
+
+    <text x="121" y="633">Home and lifestyle</text>
+    <rect x="265" y="621" width="297" height="16" fill="#2A84D2" rx="2"/>
+    <text x="569" y="633">$53.86K</text>
+
+    <text x="121" y="667">Health and beauty</text>
+    <rect x="265" y="655" width="271" height="16" fill="#008A80" rx="2"/>
+    <text x="543" y="667">$49.19K</text>
+  </g>
+
+  <!-- Visual 4: Monthly Revenue Trend (lineChart x=679 y=439 w=507 h=265) -->
+  <rect x="679" y="440" width="507" height="262" rx="4" fill="#FFFFFF" stroke="#DCE1EB"/>
+  <text x="699" y="466" fill="#12233E" font-size="14" font-weight="700">Monthly Revenue Trend (Q1 2019)</text>
+  <g stroke="#E5E9F2" stroke-width="1">
+    <line x1="730" y1="510" x2="1145" y2="510"/>
+    <line x1="730" y1="565" x2="1145" y2="565"/>
+    <line x1="730" y1="620" x2="1145" y2="620"/>
+    <line x1="730" y1="655" x2="1145" y2="655"/>
+  </g>
+  <polyline fill="none" stroke="#1B6EC2" stroke-width="3.5" points="785,512 938,608 1090,546"/>
+  <circle cx="785" cy="512" r="5.5" fill="#1B6EC2"/>
+  <text x="785" y="498" fill="#12233E" font-size="11.5" font-weight="700" text-anchor="middle">$116,292</text>
+  <text x="785" y="678" fill="#4A5568" font-size="12" text-anchor="middle">January</text>
+
+  <circle cx="938" cy="608" r="5.5" fill="#1B6EC2"/>
+  <text x="938" y="594" fill="#12233E" font-size="11.5" font-weight="700" text-anchor="middle">$97,219</text>
+  <text x="938" y="678" fill="#4A5568" font-size="12" text-anchor="middle">February</text>
+
+  <circle cx="1090" cy="546" r="5.5" fill="#1B6EC2"/>
+  <text x="1090" y="532" fill="#12233E" font-size="11.5" font-weight="700" text-anchor="middle">$109,456</text>
+  <text x="1090" y="678" fill="#4A5568" font-size="12" text-anchor="middle">March</text>
+</svg>

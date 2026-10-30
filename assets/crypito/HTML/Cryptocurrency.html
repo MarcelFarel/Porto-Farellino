@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cryPIto - Cryptocurrency</title>
+    <link rel="stylesheet" href="../css/Cryptocurrency.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="home.html" class="logo">cryPIto</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="home.html" class="nav-link">Home</a></li>
+                <li><a href="Cryptocurrency.html" class="nav-link active">Cryptocurrencies</a></li>
+                <li><a href="Benefits.html" class="nav-link">Benefits</a></li>
+                <li><a href="Learn_more.html" class="nav-link">Learn More</a></li>
+            </ul>
+            <a href="Register.html" class="cta-button">Sign Up</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="page-header">
+            <h1 class="page-title">Cryptocurrency Market</h1>
+            <p class="page-subtitle">Discover and track the most promising digital assets in the market</p>
+        </section>
+
+        <section class="hot-coins-section">
+            <h2 class="section-title">Top 4 Hot Coins</h2>
+            <div class="hot-coins-grid">
+                <div class="hot-coin-card">
+                    <div class="coin-icon">
+                        <img src="../Image/bitcoin.png" alt="Bitcoin" onerror="this.parentElement.innerHTML='₿'; this.parentElement.classList.add('fallback', 'btc');">
+                    </div>
+                    <h3 class="coin-name">Bitcoin</h3>
+                    <p class="coin-symbol">BTC</p>
+                    <p class="coin-price">$43,250.00</p>
+                    <p class="coin-change positive">+5.63%</p>
+                </div>
+                <div class="hot-coin-card">
+                    <div class="coin-icon">
+                        <img src="../Image/ethereum.png" alt="Ethereum" onerror="this.parentElement.innerHTML='Ξ'; this.parentElement.classList.add('fallback', 'eth');">
+                    </div>
+                    <h3 class="coin-name">Ethereum</h3>
+                    <p class="coin-symbol">ETH</p>
+                    <p class="coin-price">$2,680.50</p>
+                    <p class="coin-change positive">+2.10%</p>
+                </div>
+                <div class="hot-coin-card">
+                    <div class="coin-icon">
+                        <img src="../Image/cardano.png" alt="Cardano" onerror="this.parentElement.innerHTML='₳'; this.parentElement.classList.add('fallback', 'ada');">
+                    </div>
+                    <h3 class="coin-name">Cardano</h3>
+                    <p class="coin-symbol">ADA</p>
+                    <p class="coin-price">$0.485</p>
+                    <p class="coin-change negative">-0.92%</p>
+                </div>
+                <div class="hot-coin-card">
+                    <div class="coin-icon">
+                        <img src="../Image/solana.png" alt="Solana" onerror="this.parentElement.innerHTML='◎'; this.parentElement.classList.add('fallback', 'sol');">
+                    </div>
+                    <h3 class="coin-name">Solana</h3>
+                    <p class="coin-symbol">SOL</p>
+                    <p class="coin-price">$98.75</p>
+                    <p class="coin-change negative">-0.23%</p>
+                </div>
+            </div>
+        </section>
+
+ <section class="all-coins-section">
+            <h2 class="section-title">All Coins Market</h2>
+            
+            <div class="search-filter-bar">
+                <input type="text" class="search-input" placeholder="🔍 Search cryptocurrencies...">
+            </div>
+
+            <div class="coins-table">
+                <div class="table-header">
+                    <div class="rank">#</div>
+                    <div class="rank">Asset name</div>
+                    <div class="rank">Buy(IDR)</div>
+                    <div class="rank">Sell(IDR)</div>
+                    <div class="rank">Changes</div>
+                    <div class="rank">Trend</div>
+                </div>
+
+                <div class="table-row">
+                    <div class="rank">1</div>
+                    <div class="coin-info">
+                        <div class="table-coin-icon">
+                            <img src="../Image/usdc.png" alt="USDC" onerror="this.parentElement.innerHTML='₮'; this.parentElement.classList.add('fallback', 'usdt');">
+                        </div>
+                        <div class="coin-details">
+                            <h3>USDC</h3>
+                            <span>USDC</span>
+                        </div>
+                    </div>
+                    <div class="price">3,678</div>
+                    <div class="price">3,572</div>
+                    <div class="change-24h negative">-3.36%</div>
+                    <div class="trend-arrow">↘️</div>
+                </div>
+
+                <div class="table-row">
+                    <div class="rank">2</div>
+                    <div class="coin-info">
+                        <div class="table-coin-icon">
+                            <img src="../Image/dogecoin.png" alt="Dogecoin" onerror="this.parentElement.innerHTML='Ð'; this.parentElement.classList.add('fallback', 'doge');">
+                        </div>
+                        <div class="coin-details">
+                            <h3>Dogecoin</h3>
+                            <span>Dogecoin</span>
+                        </div>
+                    </div>
+                    <div class="price">4,697</div>
+                    <div class="price">4,534</div>
+                    <div class="change-24h negative">-2.01%</div>
+                    <div class="trend-arrow">↘️</div>
+                </div>
+
+                <div class="table-row">
+                    <div class="rank">3</div>
+                    <div class="coin-info">
+                        <div class="table-coin-icon">
+                            <img src="../Image/tether.png" alt="Tether" onerror="this.parentElement.innerHTML='₮'; this.parentElement.classList.add('fallback', 'usdt');">
+                        </div>
+                        <div class="coin-details">
+                            <h3>Tether</h3>
+                            <span>USDT</span>
+                        </div>
+                    </div>
+                    <div class="price">37,356</div>
+                    <div class="price">37,224</div>
+                    <div class="change-24h negative">-2.11%</div>
+                    <div class="trend-arrow">↘️</div>
+                </div>
+
+                <div class="table-row">
+                    <div class="rank">4</div>
+                    <div class="coin-info">
+                        <div class="table-coin-icon">
+                            <img src="../Image/tron.png" alt="Tron" onerror="this.parentElement.innerHTML='⚡'; this.parentElement.classList.add('fallback', 'trx');">
+                        </div>
+                        <div class="coin-details">
+                            <h3>Tron</h3>
+                            <span>TRX</span>
+                        </div>
+                    </div>
+                    <div class="price">1,542,748</div>
+                    <div class="price">1,525,187</div>
+                    <div class="change-24h negative">-1.87%</div>
+                    <div class="trend-arrow">↘️</div>
+                </div>
+
+                <div class="table-row">
+                    <div class="rank">5</div>
+                    <div class="coin-info">
+                        <div class="table-coin-icon">
+                            <img src="../Image/sui.png" alt="SUI" onerror="this.parentElement.innerHTML='◇'; this.parentElement.classList.add('fallback', 'sui');">
+                        </div>
+                        <div class="coin-details">
+                            <h3>SUI</h3>
+                            <span>SUI</span>
+                        </div>
+                    </div>
+                    <div class="price">16,394</div>
+                    <div class="price">16,293</div>
+                    <div class="change-24h positive">+0.00%</div>
+                    <div class="trend-arrow">→</div>
+                </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Support</a>
+                <a href="#" class="footer-link">About Us</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+            <p class="footer-text">© 2025 cryPIto. All rights reserved. Empowering your crypto journey.</p>
+        </div>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var input = document.querySelector('.search-input');
+  if (!input) return;
+  var rows = Array.prototype.slice.call(document.querySelectorAll('.coins-table .table-row'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.hot-coin-card'));
+  var emptyMsg = document.createElement('div');
+  emptyMsg.style.cssText = 'padding: 1.5rem; text-align: center; color: rgba(255,255,255,0.7); display: none;';
+  emptyMsg.textContent = 'No matching assets found in All Coins Market.';
+  var table = document.querySelector('.coins-table');
+  if (table) table.appendChild(emptyMsg);
+
+  input.addEventListener('input', function () {
+    var q = input.value.trim().toLowerCase();
+    var visibleRows = 0;
+    rows.forEach(function (row) {
+      var text = row.textContent.toLowerCase();
+      var match = !q || text.indexOf(q) !== -1;
+      row.style.display = match ? '' : 'none';
+      if (match) visibleRows++;
+    });
+    cards.forEach(function (card) {
+      var text = card.textContent.toLowerCase();
+      var match = !q || text.indexOf(q) !== -1;
+      card.style.opacity = match ? '1' : '0.35';
+    });
+    emptyMsg.style.display = visibleRows === 0 ? 'block' : 'none';
+  });
+});
+</script>
+
+
+<script>
+(function(){
+  try {
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'crypito-page', page: 'Cryptocurrency.html' }, '*');
+    }
+  } catch (e) {}
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    var q = item.querySelector('.faq-question');
+    var a = item.querySelector('.faq-answer');
+    var t = item.querySelector('.faq-toggle');
+    if (q && a) {
+      q.addEventListener('click', function() {
+        var hidden = a.style.display === 'none';
+        a.style.display = hidden ? 'block' : 'none';
+        if (t) t.textContent = hidden ? '−' : '+';
+      });
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
